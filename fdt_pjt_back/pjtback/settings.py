@@ -64,6 +64,9 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# adapter 적용
+ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

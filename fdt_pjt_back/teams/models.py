@@ -10,4 +10,4 @@ class Team(models.Model):
     total_number = models.IntegerField(null=True, blank=True) # 총 모집할 인원
     kakao_chat = models.CharField(max_length=50, null=True, blank=True) # 팀 카카오 오픈 챗
     # 팀장
-    reader = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reader_team')
+    leader = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='leader_team')

@@ -9,9 +9,11 @@ class Skill(models.Model):
 
 class Knowledge(models.Model):
     level_choices = [
-        ("high", "high"),
-        ("middle", "middle"),
-        ("low", "low"),
+        ("5", "⭐⭐⭐⭐⭐"),
+        ("4", "⭐⭐⭐⭐"),
+        ("3", "⭐⭐⭐"),
+        ("2", "⭐⭐"),
+        ("1", "⭐"),
     ]
     
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='user_knowledge')

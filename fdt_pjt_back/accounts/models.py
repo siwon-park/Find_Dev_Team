@@ -57,7 +57,7 @@ class User(AbstractUser):
     nickname = models.CharField(max_length=30)
     img = models.CharField(max_length=50, null=True, blank=True)
     intro = models.CharField(max_length=200, null=True, blank=True)
-    kakao_chat = models.CharField(max_length=50)
+    kakao_chat = models.CharField(max_length=50, null=True, blank=True)
     github_url = models.CharField(max_length=200, null=True, blank=True)
     portfolio_url = models.CharField(max_length=200, null=True, blank=True)
     strength = models.CharField(max_length=50, null=True, blank=True) # 강점
