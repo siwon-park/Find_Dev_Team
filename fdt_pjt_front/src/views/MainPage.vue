@@ -1,21 +1,13 @@
 <template>
   <div>
-    <h1>안녕하세요?</h1>
+    <h1>메인페이지</h1>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-
-  data() {
-    return {
-
-    }
-  },
-  
-};
+  name: 'MainPage',
+}
 </script>
 
 <style>
