@@ -10,21 +10,13 @@ User = get_user_model()
 # 전체 팀 조회
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능
-def team_list(request):
+def team(request):
     team_list = Team.objects.all()
     serializer = MyTeamSerializer(team_list, many=True)
     return Response(serializer.data)
 
-# 개별 팀 조회
-@api_view(['GET'])
-@permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능
-def team_pick(request, team_pk):
-    team_pick = get_object_or_404(Team, pk=team_pk)
-    serializer = MyTeamSerializer(team_pick)
-    return Response(serializer.data)
 
-
-# 팀 페이지 조회 및 수정 및 팀장 등록 및 해제
+# 개별 팀 조회 및 수정
 @api_view(['GET', 'PUT'])
 @permission_classes([IsAuthenticated]) # 인증된 사용자만 권한 허용
 def myteam(request, team_pk):
