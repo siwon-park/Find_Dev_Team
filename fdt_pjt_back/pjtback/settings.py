@@ -67,6 +67,16 @@ SITE_ID = 1
 # adapter 적용
 ACCOUNT_ADAPTER = 'accounts.adapters.CustomAccountAdapter'
 
+# 회원가입시 DB에 입력된 커스텀 필드 데이터를 넣기 위해 등록
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.account.AccountSerializer',
+}
+
+# adapter에 override한 필드를 User정보로 가져오기 위해 AccountSerializer 등록 
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER' : 'accounts.serializers.account.AccountSerializer'
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
