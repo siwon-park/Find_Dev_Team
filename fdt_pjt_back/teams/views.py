@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework.permissions import *
 from .serializers.team import *
+from rest_framework import status
 
 User = get_user_model()
 
@@ -14,6 +15,16 @@ def team(request):
     team_list = Team.objects.all()
     serializer = MyTeamSerializer(team_list, many=True)
     return Response(serializer.data)
+
+
+# 팀 생성
+@api_view(['POST'])
+@permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능
+def team_create(request):
+    serializer = CreateTeamSerializer(data=request.data)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 # 개별 팀 조회 및 수정

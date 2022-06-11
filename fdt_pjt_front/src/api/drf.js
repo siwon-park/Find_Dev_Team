@@ -29,8 +29,10 @@ export default {
   teams: {
     // 전체 팀 조회
     teams: () => HOST + TEAMS,
-    // 개별 팀 조회
+    // 개별 팀 조회 및 수정
     myteam: () => HOST + TEAMS + `${teamId}/`,
+    // 팀 생성
+    teamcreate: () => HOST + TEAMS + 'create/',
 
   }
 }

@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage/MainPage.vue'
 import LoginForm from '@/views/Accounts/LoginForm.vue'
+import TeamPageView from '@/views/Teams/TeamPageView.vue'
+import TeamEditView from '@/views/Teams/TeamEditView.vue'
+import TeamNewView from '@/views/Teams/TeamNewView.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +18,27 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginForm
+  },
+
+  // 개별 팀 조회
+  {
+    path: '/teams/:teamId',
+    name: 'team',
+    component: TeamPageView
+  },
+
+  // 팀 수정
+  {
+    path: '/teams/:teamId/edit',
+    name: 'teamEdit',
+    component: TeamEditView
+  },
+
+  // 팀 생성
+  {
+    path: '/new',
+    name: 'teamNew',
+    component: TeamNewView
   },
 
 ]

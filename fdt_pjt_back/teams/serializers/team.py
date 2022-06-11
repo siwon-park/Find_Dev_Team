@@ -21,3 +21,18 @@ class MyTeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'
+
+# 팀 생성
+class CreateTeamSerializer(serializers.ModelSerializer):
+
+    class UserSeializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = User
+            fields = ('username',)
+
+    team_memeber = UserSeializer(many=True)
+
+    class Meta:
+        model = Team
+        fields = '__all__'
