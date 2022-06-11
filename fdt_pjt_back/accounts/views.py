@@ -8,6 +8,17 @@ from rest_framework import status
 
 User = get_user_model()
 
+# 회원탈퇴
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def signout(request):
+    request.user.delete()
+    data = {
+        'content': '정상적으로 회원탈퇴 처리되었습니다.',
+    }
+    return Response(data, status=status.HTTP_204_NO_CONTENT)
+
+
 # 전체 사용자 조회(팀이 없는 사용자)
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능

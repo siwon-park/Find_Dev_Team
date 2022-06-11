@@ -16,12 +16,14 @@ export default {
     signup: () => HOST + 'account/signup/',
     // 회원탈퇴
     signout: () => HOST + 'accounts/signout/',
-    // 사용자 조회/수정
-    mypage: () => HOST + ACCOUNTS + `${userId}/mypage/`, 
+    // 나의 사용자 조회/수정
+    mypage: () => HOST + `account/user/`,
+    // 다른 사용자 조회
+    profile: userId => HOST + ACCOUNTS + `${userId}/`,
     // 북마크 조회/등록/해제
-    bookmark: () => HOST + ACCOUNTS + `${userId}/bookmark/`,
+    bookmark: userId => HOST + ACCOUNTS + `${userId}/bookmark/`,
     // 개별 사용자 조회
-    userprofile: () => HOST + ACCOUNTS + `${userId}/`,
+    userprofile: userId => HOST + ACCOUNTS + `${userId}/`,
 
   },
   
@@ -29,10 +31,15 @@ export default {
   teams: {
     // 전체 팀 조회
     teams: () => HOST + TEAMS,
+<<<<<<< HEAD
     // 개별 팀 조회 및 수정
     myteam: () => HOST + TEAMS + `${teamId}/`,
     // 팀 생성
     teamcreate: () => HOST + TEAMS + 'create/',
+=======
+    // 개별 팀 조회
+    myteam: teamId => HOST + TEAMS + `${teamId}/`,
+>>>>>>> b0f8cb10d7d2ffaa97797b61fd61b40c8a529367
 
   }
 }
