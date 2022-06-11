@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import MainPage from '@/views/MainPage/MainPage.vue'
+import LoginForm from '@/views/Accounts/LoginForm.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  {
+  { // 메인 페이지
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'main',
+    component: MainPage
   },
+  { // 로그인 페이지
+    path: '/login',
+    name: 'login',
+    component: LoginForm
+  },
+
 ]
 
 const router = new VueRouter({
