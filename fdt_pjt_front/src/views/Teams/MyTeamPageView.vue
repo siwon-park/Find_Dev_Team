@@ -8,6 +8,7 @@
       <router-link :to="{ name: 'teamEdit', params: { teamId } }">
         <button>팀 수정 버튼</button>
       </router-link>
+
     </div>
   </div>
 </template>

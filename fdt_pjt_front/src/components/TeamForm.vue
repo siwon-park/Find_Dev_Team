@@ -1,11 +1,26 @@
 <template>
   <div>
     <h1>팀 수정 폼 페이지</h1>
+    <p>{{ currentUser }}</p>
+    <form @submit.prevent="onSubmit()" action="POST">
+      <div>
+        팀 명:
+        <label for="name"></label>
+        <input type="text" v-model="newTeam.name" placeholder="name" id="name">
+      </div>
+      <div>
+        팀 소개:
+        <label for="intro"></label>
+        <input type="text" v-model="newTeam.intro" placeholder="intro" id="intro">
+      </div>
+      <input type="submit">
+    </form>
+
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'TeamForm',
   props:{
@@ -23,8 +38,13 @@ export default {
     }
   },
 
+  computed: {
+    ...mapGetters(['currentUser',])
+  },
+
+
   methods: {
-    ...mapActions(['createTeam', 'updateTeam']),
+    ...mapActions(['createTeam', 'updateTeam', 'fetchCurrentUser', ]),
     onSubmit(){
       if(this.action === 'create') {
         this.createTeam(this.newTeam)
@@ -33,12 +53,16 @@ export default {
       else if (this.action === 'update'){
         const payload = {
           id: this.team.id,
+          leader: this.currentUser.id,
           ...this.newTeam,
         }
         this.updateTeam(payload)
         alert("수정되었습니다.")
       }
     }
+  },
+  created() {
+    this.fetchCurrentUser()
   }
 
 }

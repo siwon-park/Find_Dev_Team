@@ -182,6 +182,18 @@ REST_FRAMEWORK = {
 
 
 
+# ImageFields 사용 준비
+
+# 사용자가 업로드 한 파일(미디어 파일)들을 보관할 디렉토리의 절대 경로
+# MEDIAL_URL을 통해 참조하는 파일의 실제 위치
+MEDIA_ROOT = BASE_DIR / 'media' 
+
+# MEDIA_ROOT에서 제공되는 미디어를 처리하는 URL, 업로드 된 파일의 주소(URL)를 만들어주는 역할
+# 업로드 된 파일의 URL
+MEDIA_URL = '/media/' 
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 # secret key 호출
 secret_file = os.path.join(BASE_DIR, 'secrets.json') #secrets.json을 불러옴
 

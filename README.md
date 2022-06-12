@@ -87,7 +87,7 @@
 | NO.  | Content                                                      |
 | ---- | ------------------------------------------------------------ |
 | 1    | - OneToOneField : 1:1 외래키 관계 설정                       |
-| 2    | 1. 기본 재정의 : adapter 정보 : 정보 저장용<br />2. 회원 가입 필드는 회원가입에 들어가야 하는 필드만 받아 올 수 있게 새로 serializer 정의(Register serializer 사용) |
+| 2    | 1. 기본 재정의 : adapter 정보 : 정보 저장용<br />2. 회원 가입 필드는 회원가입에 들어가야 하는 필드만 받아 올 수 있게 새로 serializer 정의(Register serializer 사용)<br />3. static, media file의 차이점<br />- static : 개발자가 준비해놓은 파일<br />- media : 사용자가 업로드한 파일 |
 |      |                                                              |
 |      |                                                              |
 |      |                                                              |

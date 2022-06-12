@@ -16,7 +16,7 @@ export default {
     ...mapGetters(['team', ])
   },
   methods: {
-    ...mapActions(['fetchTeam'])
+    ...mapActions(['fetchTeam',])
   },
   created() {
     this.fetchTeam(this.$route.params.teamId)

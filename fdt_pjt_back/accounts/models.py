@@ -55,7 +55,7 @@ class User(AbstractUser):
 
     group = models.CharField(max_length=30) # 반
     nickname = models.CharField(max_length=30)
-    img = models.CharField(max_length=50, null=True, blank=True)
+    img = models.ImageField(upload_to='uploads/%Y/%m/%d', blank=True, null=True)
     intro = models.CharField(max_length=200, null=True, blank=True)
     kakao_chat = models.CharField(max_length=50, null=True, blank=True)
     github_url = models.CharField(max_length=200, null=True, blank=True)

@@ -2,6 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from skills.models import Knowledge
 from dj_rest_auth.registration.serializers import RegisterSerializer
+
+from teams.models import Team
 User = get_user_model()
 
 # 로그인/회원가입/로그아웃/비밀번호 찾기/회원 탈퇴
@@ -43,10 +45,15 @@ class AccountSerializer(serializers.ModelSerializer):
     github_url = serializers.CharField(max_length=200)
     portfolio_url = serializers.CharField(max_length=200)
     strength = serializers.CharField(max_length=50)
+    my_team = serializers.CharField(max_length=10)
+
+    def to_representation(self, instance):
+        self.fields['my_team'] = TeamSerializer(read_only=True)
+        return super(AccountSerializer, self).to_representation(instance)
 
     class Meta:
         model = User
-        fields = ('sex', 'region', 'position', 'major', 'group', 'nickname', 'img', 'intro', 'kakao_chat', 'github_url', 'portfolio_url', 'strength', )
+        fields = ('id', 'sex', 'region', 'position', 'major', 'group', 'nickname', 'img', 'intro', 'kakao_chat', 'github_url', 'portfolio_url', 'strength', 'my_team',)
 
     def get_cleaned_data(self):
         data = super().get_cleaned_data()
@@ -62,8 +69,14 @@ class AccountSerializer(serializers.ModelSerializer):
         data['github_url'] = self.validated_data.get('github_url', '')
         data['portfolio_url'] = self.validated_data.get('portfolio_url', '')
         data['strength'] = self.validated_data.get('strength', '')
+        data['my_team'] = self.validated_data.get('my_team', '')
 
         return data
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = ('id', 'name', )
 
 
 

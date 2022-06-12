@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>안녕하세요?</h1>
-    <!-- <router-link :to="{ name: 'team', params: { teamId: profile.my_team } }">내 팀 페이지</router-link> -->
+    <router-link :to="{ name: 'teamNew' }">팀 생성 버튼</router-link>
+    <!-- <router-link :to="{ name: 'team', params: { teamId: currentUser.my_team.id } }">내 팀 페이지</router-link> -->
+    
     <router-link to='/login' v-if="!isLoggedIn">Login</router-link>
     <router-link @click.native="logout()" to='/login' v-if="isLoggedIn">Logout</router-link>
     <router-view></router-view>
@@ -20,10 +22,14 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isLoggedIn',])
+    ...mapGetters(['isLoggedIn', 'currentUser', ])
   },
   methods: {
-    ...mapActions(['logout',])
+    ...mapActions(['logout', 'fetchCurrentUser', ])
+  },
+
+  created() {
+    this.fetchCurrentUser()
   }
 };
 </script>
