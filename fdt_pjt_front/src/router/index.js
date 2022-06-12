@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage/MainPage.vue'
 import LoginForm from '@/views/Accounts/LoginForm.vue'
+import SignUpForm from '@/views/Accounts/SignUpForm.vue'
+import MyPage from '@/views/MyPage/MyPage.vue'
+import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
 import TeamPageView from '@/views/Teams/TeamPageView.vue'
 import TeamEditView from '@/views/Teams/TeamEditView.vue'
 import TeamNewView from '@/views/Teams/TeamNewView.vue'
@@ -19,6 +22,22 @@ const routes = [
     name: 'login',
     component: LoginForm
   },
+  { // 회원가입 페이지
+    path: '/signup',
+    name: 'signup',
+    component: SignUpForm
+  },
+  { // 마이페이지
+    path: '/mypage',
+    name: 'mypage',
+    component: MyPage
+  },
+  {
+    path: '/mypage/edit',
+    name: 'mypageedit',
+    component: MyPageEdit
+  },
+
 
   // 개별 팀 조회
   {

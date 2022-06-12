@@ -27,7 +27,15 @@
       </div>
       <div>
         <label for="position">Position:</label>
-        <input v-model="signup_credentials.birth_date" type="text" id="position" required />
+        <input v-model="signup_credentials.position" type="text" id="position" required />
+      </div>
+      <div>
+        <label for="major">major:</label>
+        <input v-model="signup_credentials.major" type="text" id="major" required />
+      </div>
+      <div>
+        <label for="group">group:</label>
+        <input v-model="signup_credentials.group" type="text" id="group" required />
       </div>
       <div>
         <button>Signup</button>
