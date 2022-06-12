@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage/MainPage.vue'
 import LoginForm from '@/views/Accounts/LoginForm.vue'
-import TeamPageView from '@/views/Teams/TeamPageView.vue'
+import MyTeamPageView from '@/views/Teams/MyTeamPageView.vue'
 import TeamEditView from '@/views/Teams/TeamEditView.vue'
 import TeamNewView from '@/views/Teams/TeamNewView.vue'
 
@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/teams/:teamId',
     name: 'team',
-    component: TeamPageView
+    component: MyTeamPageView
   },
 
   // 팀 수정

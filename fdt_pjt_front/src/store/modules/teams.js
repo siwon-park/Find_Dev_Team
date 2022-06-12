@@ -69,7 +69,7 @@ export default {
     },
 
     // 팀 수정
-    update({ commit, getters }, { id, name, intro, leader }){
+    updateTeam({ commit, getters }, { id, name, intro, leader }){
       axios({
         url: drf.teams.myteam(id),
         method: 'put',
