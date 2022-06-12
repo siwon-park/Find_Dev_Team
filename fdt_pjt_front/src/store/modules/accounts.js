@@ -116,11 +116,11 @@ export default {
     },
 
     // 현재 유저(자기 자신) 정보 가져오기
-    fetchCurrentUser({ commit, getters, dispatch }, userId) {
+    fetchCurrentUser({ commit, getters, dispatch }) {
       // 로그인 되어있을 경우에 정보를 가져옴
       if (getters.isLoggedIn) {
         axios({
-          url: drf.accounts.mypage(userId),
+          url: drf.accounts.mypage(),
           method: 'get',
           headers: getters.authHeader,
         })

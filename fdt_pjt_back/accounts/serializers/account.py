@@ -1,11 +1,32 @@
-from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from skills.models import Knowledge
-
+from dj_rest_auth.registration.serializers import RegisterSerializer
 User = get_user_model()
 
 # 로그인/회원가입/로그아웃/비밀번호 찾기/회원 탈퇴
+class AccountSignUpSerializer(RegisterSerializer):
+    sex = serializers.CharField(max_length=10)
+    region = serializers.CharField(max_length=30) 
+    position = serializers.CharField(max_length=30) 
+    major = serializers.CharField(max_length=30)
+    group = serializers.CharField(max_length=30)
+
+    class Meta:
+        model= User
+        fields = ('sex', 'region', 'position', 'major', 'group', 'nickname',)
+
+    def get_cleaned_data(self):
+        data = super().get_cleaned_data()
+        data['sex'] = self.validated_data.get('sex', '')
+        data['region'] = self.validated_data.get('region', '')
+        data['position'] = self.validated_data.get('position', '')
+        data['major'] = self.validated_data.get('major', '')
+        data['group'] = self.validated_data.get('group', '')
+        data['nickname'] = self.validated_data.get('nickname', '')
+
+        return data
+
 
 # account 필드 재정의
 class AccountSerializer(serializers.ModelSerializer):
@@ -29,18 +50,18 @@ class AccountSerializer(serializers.ModelSerializer):
 
     def get_cleaned_data(self):
         data = super().get_cleaned_data()
-        data['sex'] = self.validated_data.get('profile_img', '')
-        data['region'] = self.validated_data.get('school', '')
-        data['position'] = self.validated_data.get('career', '')
-        data['major'] = self.validated_data.get('introduce', '')
-        data['group'] = self.validated_data.get('github_url', '')
-        data['nickname'] = self.validated_data.get('blog_url', '')
-        data['img'] = self.validated_data.get('notion_url', '')
-        data['intro'] = self.validated_data.get('notion_url', '')
-        data['kakao_chat'] = self.validated_data.get('notion_url', '')
-        data['github_url'] = self.validated_data.get('notion_url', '')
-        data['portfolio_url'] = self.validated_data.get('notion_url', '')
-        data['strength'] = self.validated_data.get('notion_url', '')
+        data['sex'] = self.validated_data.get('sex', '')
+        data['region'] = self.validated_data.get('region', '')
+        data['position'] = self.validated_data.get('position', '')
+        data['major'] = self.validated_data.get('major', '')
+        data['group'] = self.validated_data.get('group', '')
+        data['nickname'] = self.validated_data.get('nickname', '')
+        data['img'] = self.validated_data.get('img', '')
+        data['intro'] = self.validated_data.get('intro', '')
+        data['kakao_chat'] = self.validated_data.get('kakao_chat', '')
+        data['github_url'] = self.validated_data.get('github_url', '')
+        data['portfolio_url'] = self.validated_data.get('portfolio_url', '')
+        data['strength'] = self.validated_data.get('strength', '')
 
         return data
 
