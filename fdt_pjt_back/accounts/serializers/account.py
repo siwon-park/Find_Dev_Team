@@ -13,6 +13,7 @@ class AccountSignUpSerializer(RegisterSerializer):
     position = serializers.CharField(max_length=30) 
     major = serializers.CharField(max_length=30)
     group = serializers.CharField(max_length=30)
+    nickname = serializers.CharField(max_length=30)
 
     class Meta:
         model= User

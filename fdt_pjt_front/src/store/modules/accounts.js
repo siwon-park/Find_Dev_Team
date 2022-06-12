@@ -125,7 +125,6 @@ export default {
           headers: getters.authHeader,
         })
         .then(res => {
-          console.log(res.data)
           commit('SET_CURRENT_USER', res.data)
         })
         .catch(err => {
@@ -141,6 +140,26 @@ export default {
         router.push({name: 'login'})
       }
     },
+
+    // 프로필 수정
+    updateProfile({ commit, getters }, userData) {
+      if (getters.isLoggedIn) {
+        axios({
+          url: drf.accounts.mypage(),
+          method: 'put',
+          data: userData,
+          headers: getters.authHeader,
+        })
+        .then(res => {
+          commit('SET_CURRENT_USER', res.data)
+          router.push({ name: 'mypage' })
+        })
+        .catch(err => {
+          console.error(err.response.data)
+        })
+      }
+    },
+
 
     // 다른 유저 프로필 조회
     fetchProfile({commit, getters}, userId) {

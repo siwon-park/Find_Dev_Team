@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TeamForm from '@/components/TeamForm.vue'
+import TeamForm from '@/components/Teams/TeamForm.vue'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {

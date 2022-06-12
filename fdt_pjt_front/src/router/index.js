@@ -32,29 +32,25 @@ const routes = [
     name: 'mypage',
     component: MyPage
   },
-  {
+  { // 마이페이지 수정
     path: '/mypage/edit',
     name: 'mypageedit',
     component: MyPageEdit
   },
 
-
-  // 개별 팀 조회
-  {
+  { // 개별 팀 조회
     path: '/teams/:teamId',
     name: 'team',
     component: MyTeamPageView
   },
 
-  // 팀 수정
-  {
+  { // 팀 수정
     path: '/teams/:teamId/edit',
     name: 'teamEdit',
     component: TeamEditView
   },
 
-  // 팀 생성
-  {
+  { // 팀 생성
     path: '/new',
     name: 'teamNew',
     component: TeamNewView
