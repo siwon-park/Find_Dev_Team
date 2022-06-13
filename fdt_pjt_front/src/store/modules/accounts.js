@@ -160,7 +160,6 @@ export default {
       }
     },
 
-
     // 다른 유저 프로필 조회
     fetchProfile({commit, getters}, userId) {
       axios({

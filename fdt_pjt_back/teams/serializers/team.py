@@ -16,7 +16,7 @@ class UserSeializer(serializers.ModelSerializer):
 # 전체/개별 팀 조회
 class MyTeamSerializer(serializers.ModelSerializer):
 
-    team_memeber = UserSeializer(many=True, read_only=True)
+    team_member = UserSeializer(many=True, read_only=True)
 
     class Meta:
         model = Team
@@ -31,7 +31,7 @@ class CreateTeamSerializer(serializers.ModelSerializer):
             model = User
             fields = ('username',)
 
-    team_memeber = UserSeializer(many=True)
+    team_member = UserSeializer(many=True, read_only=True)
 
     class Meta:
         model = Team
