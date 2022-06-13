@@ -52,7 +52,7 @@ export default {
     },
 
     // 팀 생성
-    createTeam({ commit, getters }, team){
+    createTeam({ commit, getters }, {team, userInfo}){
       axios({
         url: drf.teams.teamcreate(),
         method: 'post',
@@ -61,6 +61,11 @@ export default {
       })
       .then(res => {
         commit('SET_TEAM', res.data)
+        const team_data = {id: res.data.id, name: res.data.name}
+        console.log(res.data)
+        userInfo.my_team = team_data
+        console.log(userInfo)
+        this.commit('SET_CURRENT_USER', userInfo)
         router.push({
           name: 'team',
           params:{ teamId: getters.team.id }

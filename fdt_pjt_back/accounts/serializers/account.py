@@ -46,7 +46,7 @@ class AccountSerializer(serializers.ModelSerializer):
     github_url = serializers.CharField(max_length=200)
     portfolio_url = serializers.CharField(max_length=200)
     strength = serializers.CharField(max_length=50)
-    my_team = serializers.CharField(max_length=10)
+    my_team = serializers.CharField(max_length=50)
 
     def to_representation(self, instance):
         self.fields['my_team'] = TeamSerializer(read_only=True)
@@ -54,7 +54,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'sex', 'region', 'position', 'major', 'group', 'nickname', 'img', 'intro', 'kakao_chat', 'github_url', 'portfolio_url', 'strength', 'my_team',)
+        fields = ('id', 'username', 'sex', 'region', 'position', 'major', 'group', 'nickname', 'img', 'intro', 'kakao_chat', 'github_url', 'portfolio_url', 'strength', 'my_team',)
 
     def get_cleaned_data(self):
         data = super().get_cleaned_data()

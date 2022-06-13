@@ -33,6 +33,7 @@ export default {
         name: this.team.name,
         intro: this.team.intro,
         leader: this.team.leader,
+        team_member: this.team.team_member,
       }
 
     }
@@ -44,10 +45,15 @@ export default {
 
 
   methods: {
-    ...mapActions(['createTeam', 'updateTeam', 'fetchCurrentUser', ]),
+    ...mapActions(['createTeam', 'updateTeam', 'fetchCurrentUser',]),
     onSubmit(){
       if(this.action === 'create') {
-        this.createTeam(this.newTeam)
+        this.newTeam.leader = this.currentUser.id
+        this.newTeam.team_member = [
+          { id: this.currentUser.id,
+          username: this.currentUser.username}
+        ]
+        this.createTeam({team: this.newTeam, userInfo: this.currentUser})
         alert("등록되었습니다.")
       }
       else if (this.action === 'update'){

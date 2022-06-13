@@ -1,4 +1,3 @@
-from tokenize import group
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -63,6 +62,6 @@ class User(AbstractUser):
     strength = models.CharField(max_length=50, null=True, blank=True) # 강점
 
     # 팀
-    my_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team_memeber', null=True, blank=True)
+    my_team = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='team_member', null=True, blank=True)
     # 북마킹
     bookmarking = models.ManyToManyField('self', symmetrical=False, related_name='bookmarked_users', blank=True)
