@@ -23,7 +23,7 @@ def team(request):
 def team_create(request):
     serializer = CreateTeamSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
-        serializer.save()
+        serializer.save(team_member = request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
