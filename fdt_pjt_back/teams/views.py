@@ -24,6 +24,16 @@ def team_create(request):
     serializer = CreateTeamSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save()
+        print(serializer.data.get('id'))
+        # me = get_object_or_404(User, pk=request.user.id)
+        teamID = serializer.data.get('id')
+        # me.my_team.add(teamID)
+        team = get_object_or_404(Team, pk=teamID)
+        team.team_member.add(request.user)
+        print(team)
+        print(team.team_member)
+        print(team.team_member__id)
+        print(team.team_member__username)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

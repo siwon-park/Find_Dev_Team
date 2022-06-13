@@ -25,13 +25,13 @@ class MyTeamSerializer(serializers.ModelSerializer):
 # 팀 생성
 class CreateTeamSerializer(serializers.ModelSerializer):
 
-    class UserSeializer(serializers.ModelSerializer):
+    class UserTwoSeializer(serializers.ModelSerializer):
 
         class Meta:
             model = User
             fields = ('username',)
 
-    team_member = UserSeializer(many=True, read_only=True)
+    team_member = UserTwoSeializer(many=True, read_only=True)
 
     class Meta:
         model = Team
