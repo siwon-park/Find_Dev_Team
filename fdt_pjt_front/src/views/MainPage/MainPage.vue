@@ -3,6 +3,8 @@
     <h1>메인페이지</h1>
     <div>
       <TeamList></TeamList>
+      <hr>
+      <hr>
       <MemberList></MemberList>
     </div>
   </div>
