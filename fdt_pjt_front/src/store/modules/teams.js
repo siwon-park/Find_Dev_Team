@@ -25,11 +25,10 @@ export default {
   },
   actions: {
     // 전체 팀 조회
-    fetchTeams({ commit, getters}){
+    fetchTeams({ commit }){
       axios({
         url: drf.teams.teams(),
         method: 'get',
-        headers: getters.authHeader,
       })
       .then(res => commit('SET_TEAMS', res.data))
       .catch(err => console.error(err.response))

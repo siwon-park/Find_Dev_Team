@@ -24,6 +24,8 @@ export default {
     bookmark: userId => HOST + ACCOUNTS + `${userId}/bookmark/`,
     // 개별 사용자 조회
     userprofile: userId => HOST + ACCOUNTS + `${userId}/`,
+    // 전체 사용자 조회
+    userlist: () => HOST + ACCOUNTS,
 
   },
   

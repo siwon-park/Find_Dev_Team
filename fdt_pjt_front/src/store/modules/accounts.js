@@ -8,6 +8,7 @@ export default {
     currentUser: {},
     authError: null,
     profile: {},
+    allUsers:{},
   },
 
   getters: {
@@ -16,7 +17,7 @@ export default {
     currentUser: state => state.currentUser,
     authError: state => state.authError,
     profile: state => state.profile,
-
+    allUsers: state => state.allUsers,
   },
 
   mutations: {
@@ -24,7 +25,7 @@ export default {
     SET_CURRENT_USER: (state, userData) => state.currentUser = userData,
     SET_AUTH_ERROR: (state, error) => state.authError = error,
     SET_PROFILE: (state, profile) => state.profile = profile,
-
+    SET_ALL_USERS: (state, allUsersData) => state.allUsers = allUsersData,
   },
   actions: {
     // 토큰 저장(로그인 시 토큰 저장)
@@ -177,6 +178,19 @@ export default {
       })
     },
 
+    // 전체 유저 조회
+    fetchAllUsers({ commit }) {
+      axios({
+        url: drf.accounts.userlist(),
+        method: 'get',
+      })
+      .then(res => {
+        commit('SET_ALL_USERS', res.data)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    },
 
   }
 }
