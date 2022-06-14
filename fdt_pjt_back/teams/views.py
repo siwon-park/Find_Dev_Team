@@ -13,7 +13,18 @@ User = get_user_model()
 @permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능
 def team(request):
     team_list = Team.objects.all()
-    serializer = MyTeamSerializer(team_list, many=True)
+    serializer = MyTeamSerializer(team_list, many=True) # QuerySet 형태로 데이터 삽입
+    print('==============')
+    print(serializer)
+    print('==============')
+    print(serializer.data)
+    print('==============')
+    print(MyTeamSerializer)
+    print('==============')
+    print(team_list)
+    print('==============')
+    print(Team.objects.values(team_member))
+    print('==============')
     return Response(serializer.data)
 
 

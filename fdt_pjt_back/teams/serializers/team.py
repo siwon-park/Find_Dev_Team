@@ -29,7 +29,7 @@ class CreateTeamSerializer(serializers.ModelSerializer):
 
         class Meta:
             model = User
-            fields = ('username',)
+            fields = ('id',)
 
     team_member = UserTwoSeializer(many=True, read_only=True)
 
