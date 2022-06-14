@@ -14,17 +14,6 @@ User = get_user_model()
 def team(request):
     team_list = Team.objects.all()
     serializer = MyTeamSerializer(team_list, many=True) # QuerySet 형태로 데이터 삽입
-    print('==============')
-    print(serializer)
-    print('==============')
-    print(serializer.data)
-    print('==============')
-    print(MyTeamSerializer)
-    print('==============')
-    print(team_list)
-    print('==============')
-    print(Team.objects.values(team_member))
-    print('==============')
     return Response(serializer.data)
 
 
