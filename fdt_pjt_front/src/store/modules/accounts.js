@@ -8,7 +8,8 @@ export default {
     currentUser: {},
     authError: null,
     profile: {},
-    allUsers:{},
+    allUsers: {},
+    bookmarkings: {},
   },
 
   getters: {
@@ -18,6 +19,7 @@ export default {
     authError: state => state.authError,
     profile: state => state.profile,
     allUsers: state => state.allUsers,
+    bookmarkings: state => state.bookmarkings,
   },
 
   mutations: {
@@ -26,7 +28,9 @@ export default {
     SET_AUTH_ERROR: (state, error) => state.authError = error,
     SET_PROFILE: (state, profile) => state.profile = profile,
     SET_ALL_USERS: (state, allUsersData) => state.allUsers = allUsersData,
+    FETCH_BOOKMARKINGS: (state, bookmarkingData) => state.bookmarkings = bookmarkingData,
   },
+
   actions: {
     // 토큰 저장(로그인 시 토큰 저장)
     saveToken ({ commit }, token) {
@@ -186,6 +190,35 @@ export default {
       })
       .then(res => {
         commit('SET_ALL_USERS', res.data)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    },
+
+    // 북마크 조회
+    fetchBookmarkings({ commit }, userId) {
+      axios({
+        url: drf.accounts.bookmark(userId),
+        method: 'get',
+      })
+      .then(res => {
+        commit('FETCH_BOOKMARKINGS', res.data)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    },
+
+    // 북마크 등록/해제
+    setBookmark({ commit, getters }, userId) {
+      axios({
+        url: drf.accounts.bookmark(userId),
+        method: 'post',
+        headers: getters.authHeader,
+      })
+      .then(res => {
+        commit("FETCH_BOOKMARKINGS", res.data)
       })
       .catch(err => {
         console.error(err.response.data)
