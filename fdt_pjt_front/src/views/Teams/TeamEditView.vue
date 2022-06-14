@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>팀 수정 페이지</h1>
-    <TeamForm :team="team" action="update"></TeamForm>
+    <TeamEditForm :team="team" action="update"></TeamEditForm>
   </div>
 </template>
 
 <script>
-import TeamForm from '@/components/Teams/TeamForm.vue'
+import TeamEditForm from '@/components/Teams/TeamEditForm.vue'
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'TeamEditView',
-  components: { TeamForm },
+  components: { TeamEditForm },
   computed: {
     ...mapGetters(['team', ])
   },

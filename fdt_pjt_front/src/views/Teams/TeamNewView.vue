@@ -1,15 +1,15 @@
 <template>
   <div>
     <h1>팀 생성 페이지</h1>
-    <TeamForm :team="team" action="create"></TeamForm>
+    <TeamCreateForm :team="team" action="create"></TeamCreateForm>
   </div>
 </template>
 
 <script>
-  import TeamForm from '@/components/Teams/TeamForm.vue'
+  import TeamCreateForm from '@/components/Teams/TeamCreateForm.vue'
   export default {
     name: 'TeamNewView',
-    components: { TeamForm },
+    components: { TeamCreateForm },
     data() {
       return {
         team: {
