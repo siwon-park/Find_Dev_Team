@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <v-app>
     <h4>팀 수정 폼</h4>
     <p>{{ currentUser }}</p>
+    <p>{{ allUsers}}</p>
     <form @submit.prevent="onSubmit()" action="POST">
       <div>
         팀 명:
@@ -13,109 +14,27 @@
         <label for="intro"></label>
         <input type="text" v-model="newTeam.intro" placeholder="intro" id="intro">
       </div>
+      <!-- 팀 멤버 등록 -->
+      <!-- 팀 멤버:
+        <label for="team_member"></label>
+        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
       <div>
-        <v-card
-          color="blue-grey darken-1"
-          dark
-          :loading="isUpdating"
-        >
-          <template v-slot:progress>
-            <v-progress-linear
-              absolute
-              color="green lighten-3"
-              height="4"
-              indeterminate
-            ></v-progress-linear>
-          </template>
-          <v-img
-            height="200"
-            src="https://cdn.vuetifyjs.com/images/cards/dark-beach.jpg"
-          >
-            <v-row>
-              <v-col
-                class="text-right"
-                cols="12"
-              >
-                <v-menu
-                  bottom
-                  left
-                  transition="slide-y-transition"
-                >
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      icon
-                      v-bind="attrs"
-                      v-on="on"
-                    >
-                      <v-icon>mdi-dots-vertical</v-icon>
-                    </v-btn>
-                  </template>
-                  <v-list>
-                    <v-list-item @click="isUpdating = true">
-                      <v-list-item-action>
-                        <v-icon>mdi-cog</v-icon>
-                      </v-list-item-action>
-                      <v-list-item-content>
-                        <v-list-item-title>Update</v-list-item-title>
-                      </v-list-item-content>
-                    </v-list-item>
-                  </v-list>
-                </v-menu>
-              </v-col>
-              <v-row
-                class="pa-4"
-                align="center"
-                justify="center"
-              >
-                <v-col class="text-center">
-                  <h3 class="text-h5">
-                    {{ name }}
-                  </h3>
-                  <span class="grey--text text--lighten-1">{{ title }}</span>
-                </v-col>
-              </v-row>
-            </v-row>
-          </v-img>
+        <v-card :loading="isUpdating">
           <v-form>
             <v-container>
               <v-row>
-                <v-col
-                  cols="12"
-                  md="6"
-                >
-                  <v-text-field
-                    v-model="name"
-                    :disabled="isUpdating"
-                    filled
-                    color="blue-grey lighten-2"
-                    label="Name"
-                  ></v-text-field>
-                </v-col>
-                <v-col
-                  cols="12"
-                  md="6"
-                >
-                  <v-text-field
-                    v-model="title"
-                    :disabled="isUpdating"
-                    filled
-                    color="blue-grey lighten-2"
-                    label="Title"
-                  ></v-text-field>
-                </v-col>
                 <v-col cols="12">
+                  <!-- item-text : 객체의 키를 알려줌, item-value : 객체의 실제 키를 지정 -->
                   <v-autocomplete
-                    v-model="friends"
+                    v-model="newTeam.team_member"
                     :disabled="isUpdating"
-                    :items="people"
+                    :items="people" 
                     filled
                     chips
-                    color="blue-grey lighten-2"
-                    label="Select"
-                    item-text="name"
-                    item-value="name"
+                    label="team_member"
                     multiple
                   >
+                  <!-- 이름 목록 -->
                     <template v-slot:selection="data">
                       <v-chip
                         v-bind="data.attrs"
@@ -127,11 +46,12 @@
                         <v-avatar left>
                           <v-img :src="data.item.avatar"></v-img>
                         </v-avatar>
-                        {{ data.item.name }}
+                        {{ data.item }}
                       </v-chip>
                     </template>
+                    
                     <template v-slot:item="data">
-                      <template v-if="typeof data.item !== 'object'">
+                      <template v-if = "typeof data.item !== 'object'">
                         <v-list-item-content v-text="data.item"></v-list-item-content>
                       </template>
                       <template v-else>
@@ -140,16 +60,18 @@
                         </v-list-item-avatar>
                         <v-list-item-content>
                           <v-list-item-title v-html="data.item.name"></v-list-item-title>
-                          <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
                         </v-list-item-content>
+                        
                       </template>
                     </template>
+                    
                   </v-autocomplete>
+
                 </v-col>
               </v-row>
             </v-container>
           </v-form>
-          <v-divider></v-divider>
+          <!-- 버튼 -->
           <v-card-actions>
             <v-switch
               v-model="autoUpdate"
@@ -173,13 +95,10 @@
               Update Now
             </v-btn>
           </v-card-actions>
+
         </v-card>
-
-
-        <!-- 팀 멤버:
-        <label for="team_member"></label>
-        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
       </div>
+      <!-- 끝 -->
       <div>
         팀 주제:
         <label for="theme"></label>
@@ -207,7 +126,7 @@
       <input type="submit">
     </form>
 
-  </div>
+  </v-app>
 </template>
 
 <script>
@@ -233,28 +152,19 @@ export default {
 
       total_number: this.team.total_number,
       autoUpdate: true,
-        friends: [],
-        isUpdating: false,
-        name: 'Midnight Crew',
-        people: [
-          { header: 'Group 1' },
-          { name: 'Sandra Adams', group: 'Group 1'},
-          { name: 'Ali Connors', group: 'Group 1'},
-          { name: 'Trevor Hansen', group: 'Group 1'},
-          { name: 'Tucker Smith', group: 'Group 1'},
-          { divider: true },
-          { header: 'Group 2' },
-          { name: 'Britta Holt', group: 'Group 2'},
-          { name: 'Jane Smith ', group: 'Group 2'},
-          { name: 'John Smith', group: 'Group 2'},
-          { name: 'Sandra Williams', group: 'Group 2'},
-        ],
-        title: 'The summer breeze',
+      friends: ['박시원'],
+      isUpdating: false,
+      // 팀 넣고, 사용자 목록 출력
+      people: ['김철수', '박영희', ],
+        
+
     }
   },
 
   computed: {
-    ...mapGetters(['currentUser',])
+    ...mapGetters(['currentUser', 'allUsers',]),
+
+
   },
 
   watch: {
@@ -267,7 +177,7 @@ export default {
 
 
   methods: {
-    ...mapActions(['updateTeam', 'fetchCurrentUser',]),
+    ...mapActions(['updateTeam', 'fetchCurrentUser', 'fetchAllUsers']),
     onSubmit(){
       const payload = {
         id: this.team.id,
@@ -279,6 +189,12 @@ export default {
       alert("수정되었습니다.")
       }
     },
+    // add_user(){
+    //   for (const i of this.allUsers) {
+    //     people.push(i)
+    //   }
+    //   return people
+    // },
     remove (item) {
         const index = this.friends.indexOf(item.name)
         if (index >= 0) this.friends.splice(index, 1)
