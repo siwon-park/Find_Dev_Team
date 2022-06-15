@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>팀 수정 폼 페이지</h1>
+    <h4>팀 생성 폼</h4>
     <p>{{ currentUser }}</p>
     <form @submit.prevent="onSubmit()" action="POST">
       <div>
@@ -45,26 +45,15 @@ export default {
 
 
   methods: {
-    ...mapActions(['createTeam', 'updateTeam', 'fetchCurrentUser',]),
+    ...mapActions(['createTeam', 'fetchCurrentUser',]),
     onSubmit(){
-      if(this.action === 'create') {
-        this.newTeam.leader = this.currentUser.id
-        this.newTeam.team_member = [
-          { id: this.currentUser.id,
-          username: this.currentUser.username}
-        ]
-        this.createTeam({team: this.newTeam, userInfo: this.currentUser})
-        alert("등록되었습니다.")
-      }
-      else if (this.action === 'update'){
-        const payload = {
-          id: this.team.id,
-          leader: this.currentUser.id,
-          ...this.newTeam,
-        }
-        this.updateTeam(payload)
-        alert("수정되었습니다.")
-      }
+      this.newTeam.leader = this.currentUser.id
+      this.newTeam.team_member = [
+        { id: this.currentUser.id,
+        username: this.currentUser.username}
+      ]
+      this.createTeam({team: this.newTeam, userInfo: this.currentUser})
+      alert("등록되었습니다.")
     }
   },
   created() {
