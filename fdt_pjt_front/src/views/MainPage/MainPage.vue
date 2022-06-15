@@ -2,16 +2,18 @@
   <div>
     <h1>메인페이지</h1>
     <div>
-      <TeamList></TeamList>
+      <TeamList v-for="(eachTeam, index) in teams" 
+      :key="index"
+      :eachTeam="eachTeam"></TeamList>
       <hr>
       <hr>
-      <MemberList></MemberList>
+      <MemberList v-for="eachUser in allUsers" :key="eachUser.id" :eachUser="eachUser"></MemberList>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import TeamList from '@/components/MainPage/TeamList.vue'
 import MemberList from '@/components/MainPage/MemberList.vue'
 
@@ -22,8 +24,15 @@ export default {
     MemberList,
   },
   methods: {
-    ...mapActions([])
+    ...mapActions(['fetchTeams', 'fetchAllUsers'])
   },
+  computed: {
+    ...mapGetters(['teams', 'allUsers'])
+  },
+  created() {
+    this.fetchTeams()
+    this.fetchAllUsers()
+  }
 
 }
 </script>
