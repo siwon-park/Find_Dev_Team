@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import TeamModal from '@/components/MainPage/TeamModal'
+// import TeamModal from '@/components/MainPage/TeamModal'
 
 export default {
   name: 'TeamList',
   components: {
-    TeamModal
+    // TeamModal
   },
   props: {
     eachTeam: {
