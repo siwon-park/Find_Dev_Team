@@ -3,6 +3,8 @@
     <h4>팀 수정 폼</h4>
     <p>{{ currentUser }}</p>
     <p>{{ allUsers}}</p>
+    {{team}}
+    {{people}}
     <form @submit.prevent="onSubmit()" action="POST">
       <div>
         팀 명:
@@ -33,6 +35,8 @@
                     chips
                     label="team_member"
                     multiple
+                    item-text="name"
+                    item-value="name"
                   >
                   <!-- 이름 목록 -->
                     <template v-slot:selection="data">
@@ -155,7 +159,7 @@ export default {
       friends: ['박시원'],
       isUpdating: false,
       // 팀 넣고, 사용자 목록 출력
-      people: ['김철수', '박영희', ],
+      people: [{id:4, username: "test4"},{id: 10, username: '김철수'}, {id: 11, username: '박영희'}],
         
 
     }
@@ -183,11 +187,23 @@ export default {
         id: this.team.id,
         leader: this.currentUser.id,
         total_number: this.total_number,
+        common_interest: this.newTeam.common_interest,
         ...this.newTeam,
       }
       this.updateTeam(payload)
       alert("수정되었습니다.")
-      }
+      },
+      selectOne(item) {
+        console.log("hi")
+        this.data.select
+        this.newTeam.team_member.push(item)
+      },
+
+      remove (item) {
+        console.log(item)
+        const index = this.newTeam.team_member.indexOf(item.name)
+        if (index >= 0) this.newTeam.team_member.splice(index, 1)
+      },
     },
     // add_user(){
     //   for (const i of this.allUsers) {
@@ -195,10 +211,7 @@ export default {
     //   }
     //   return people
     // },
-    remove (item) {
-        const index = this.friends.indexOf(item.name)
-        if (index >= 0) this.friends.splice(index, 1)
-      },
+
 
   created() {
     this.fetchCurrentUser()
