@@ -73,11 +73,19 @@ export default {
     },
 
     // 팀 수정
+<<<<<<< HEAD
+    updateTeam({ commit, getters }, { id, name, intro, leader, total_number, theme, team_member,common_interest, number, kakao_chat }){
+      axios({
+        url: drf.teams.myteam(id),
+        method: 'put',
+        data:  {name, intro, leader, total_number, theme, team_member, common_interest, number, kakao_chat },
+=======
     updateTeam({ commit, getters }, { id, name, intro, leader, total_number, common_interest }){
       axios({
         url: drf.teams.myteam(id),
         method: 'put',
         data:  {name, intro, leader, total_number, common_interest},
+>>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
         headers: getters.authHeader,
       })
       .then(res => {

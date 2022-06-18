@@ -3,9 +3,13 @@
     <h4>팀 수정 폼</h4>
     <p>{{ currentUser }}</p>
     <p>{{ allUsers}}</p>
+<<<<<<< HEAD
+    <form @submit.prevent="onSubmit">)
+=======
     {{team}}
     {{people}}
     <form @submit.prevent="onSubmit()" action="POST">
+>>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
       <div>
         팀 명:
         <label for="name"></label>
@@ -17,8 +21,11 @@
         <input type="text" v-model="newTeam.intro" placeholder="intro" id="intro">
       </div>
       <!-- 팀 멤버 등록 -->
-      <!-- 팀 멤버:
+      팀 멤버:
         <label for="team_member"></label>
+<<<<<<< HEAD
+        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member">
+=======
         <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
       <div>
         <v-card :loading="isUpdating">
@@ -103,6 +110,7 @@
         </v-card>
       </div>
       <!-- 끝 -->
+>>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
       <div>
         팀 주제:
         <label for="theme"></label>
@@ -152,32 +160,26 @@ export default {
         common_interest: this.team.common_interest,
         number: this.team.number,
         kakao_chat: this.team.kakao_chat,
+        
       },
 
       total_number: this.team.total_number,
+<<<<<<< HEAD
+=======
       autoUpdate: true,
       friends: ['박시원'],
       isUpdating: false,
       // 팀 넣고, 사용자 목록 출력
       people: [{id:4, username: "test4"},{id: 10, username: '김철수'}, {id: 11, username: '박영희'}],
         
+>>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
 
     }
   },
 
   computed: {
     ...mapGetters(['currentUser', 'allUsers',]),
-
-
   },
-
-  watch: {
-      isUpdating (val) {
-        if (val) {
-          setTimeout(() => (this.isUpdating = false), 3000)
-        }
-      },
-    },
 
 
   methods: {
@@ -193,6 +195,11 @@ export default {
       this.updateTeam(payload)
       alert("수정되었습니다.")
       },
+<<<<<<< HEAD
+    },
+
+    
+=======
       selectOne(item) {
         console.log("hi")
         this.data.select
@@ -212,6 +219,7 @@ export default {
     //   return people
     // },
 
+>>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
 
   created() {
     this.fetchCurrentUser()
