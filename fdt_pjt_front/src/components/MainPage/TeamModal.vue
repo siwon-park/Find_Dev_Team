@@ -5,7 +5,7 @@
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-      <h1>Yolo Badge주세요</h1>
+      <h1>Yolo Badge주세요 제발요!!</h1>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
