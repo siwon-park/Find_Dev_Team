@@ -51,13 +51,13 @@
 
 ### 🏗데이터베이스 모델링(ERD)
 
-![image-20220609215301830](images/README/image-20220609215301830.png)
+![image-20220609215301830](https://user-images.githubusercontent.com/97647987/174428289-757c5b86-5a74-4b5b-90b8-c9d70002f214.png)
 
 
 
 ### 🐾 기능 명세서
 
-![image-20220609160145123](images/README/image-20220609160145123.png)
+![image-20220609160145123](https://user-images.githubusercontent.com/97647987/174428293-c553b6fb-0b20-48a2-ad4c-d7764c354456.png)
 
 
 
