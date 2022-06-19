@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ allUsers }}
+    {{this.eachUser}}
   </div>
 </template>
 
@@ -9,7 +9,11 @@ import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name:'MemberList',
-
+  props: {
+    eachUser: {
+      type:Object,
+    }
+  },
   computed: {
     ...mapGetters(['allUsers',])
   },
