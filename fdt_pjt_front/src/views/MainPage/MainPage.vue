@@ -2,9 +2,11 @@
   <div>
     <h1>메인페이지</h1>
     <div>
+      <v-app>
       <TeamList v-for="(eachTeam, index) in teams" 
       :key="index"
       :eachTeam="eachTeam"></TeamList>
+      </v-app>
       <hr>
       <hr>
       <MemberList v-for="eachUser in allUsers" :key="eachUser.id" :eachUser="eachUser"></MemberList>
