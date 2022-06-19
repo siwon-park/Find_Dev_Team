@@ -1,3 +1,5 @@
+from ast import keyword
+from unittest import result
 from rest_framework.decorators import api_view, permission_classes
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
@@ -54,3 +56,19 @@ def myteam(request, team_pk):
         return myteam_get()
     elif request.method == 'PUT':
         return myteam_put()
+
+
+# 팀원을 검색한 목록을 출력
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly]) # 인증된 사용자는 모든 요청 가능, 인증되지 않은 사용자는 GET만 가능
+def member_search(request):
+    member = request.GET.get('member', None) # request에서 query 값을 인식한다는 뜻
+    
+    if member: # 만약 사용자가 입력한 값이 있다면
+        results = User.objects.filter(username__icontains=member)
+    else: # 없으면 모든 객체값을 출력
+        results = User.objects.all()
+
+    serializer = UserSeializer(results, many=True)
+
+    return Response(serializer.data)
