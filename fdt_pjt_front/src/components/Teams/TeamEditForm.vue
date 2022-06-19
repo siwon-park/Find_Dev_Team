@@ -3,13 +3,7 @@
     <h4>팀 수정 폼</h4>
     <p>{{ currentUser }}</p>
     <p>{{ allUsers}}</p>
-<<<<<<< HEAD
-    <form @submit.prevent="onSubmit">)
-=======
-    {{team}}
-    {{people}}
-    <form @submit.prevent="onSubmit()" action="POST">
->>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
+    <form @submit.prevent="onSubmit">
       <div>
         팀 명:
         <label for="name"></label>
@@ -23,94 +17,7 @@
       <!-- 팀 멤버 등록 -->
       팀 멤버:
         <label for="team_member"></label>
-<<<<<<< HEAD
         <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member">
-=======
-        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
-      <div>
-        <v-card :loading="isUpdating">
-          <v-form>
-            <v-container>
-              <v-row>
-                <v-col cols="12">
-                  <!-- item-text : 객체의 키를 알려줌, item-value : 객체의 실제 키를 지정 -->
-                  <v-autocomplete
-                    v-model="newTeam.team_member"
-                    :disabled="isUpdating"
-                    :items="people" 
-                    filled
-                    chips
-                    label="team_member"
-                    multiple
-                    item-text="name"
-                    item-value="name"
-                  >
-                  <!-- 이름 목록 -->
-                    <template v-slot:selection="data">
-                      <v-chip
-                        v-bind="data.attrs"
-                        :input-value="data.selected"
-                        close
-                        @click="data.select"
-                        @click:close="remove(data.item)"
-                      >
-                        <v-avatar left>
-                          <v-img :src="data.item.avatar"></v-img>
-                        </v-avatar>
-                        {{ data.item }}
-                      </v-chip>
-                    </template>
-                    
-                    <template v-slot:item="data">
-                      <template v-if = "typeof data.item !== 'object'">
-                        <v-list-item-content v-text="data.item"></v-list-item-content>
-                      </template>
-                      <template v-else>
-                        <v-list-item-avatar>
-                          <img :src="data.item.avatar">
-                        </v-list-item-avatar>
-                        <v-list-item-content>
-                          <v-list-item-title v-html="data.item.name"></v-list-item-title>
-                        </v-list-item-content>
-                        
-                      </template>
-                    </template>
-                    
-                  </v-autocomplete>
-
-                </v-col>
-              </v-row>
-            </v-container>
-          </v-form>
-          <!-- 버튼 -->
-          <v-card-actions>
-            <v-switch
-              v-model="autoUpdate"
-              :disabled="isUpdating"
-              class="mt-0"
-              color="green lighten-2"
-              hide-details
-              label="Auto Update"
-            ></v-switch>
-            <v-spacer></v-spacer>
-            <v-btn
-              :disabled="autoUpdate"
-              :loading="isUpdating"
-              color="blue-grey darken-3"
-              depressed
-              @click="isUpdating = true"
-            >
-              <v-icon left>
-                mdi-update
-              </v-icon>
-              Update Now
-            </v-btn>
-          </v-card-actions>
-
-        </v-card>
-      </div>
-      <!-- 끝 -->
->>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
       <div>
         팀 주제:
         <label for="theme"></label>
@@ -164,15 +71,6 @@ export default {
       },
 
       total_number: this.team.total_number,
-<<<<<<< HEAD
-=======
-      autoUpdate: true,
-      friends: ['박시원'],
-      isUpdating: false,
-      // 팀 넣고, 사용자 목록 출력
-      people: [{id:4, username: "test4"},{id: 10, username: '김철수'}, {id: 11, username: '박영희'}],
-        
->>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
 
     }
   },
@@ -195,31 +93,9 @@ export default {
       this.updateTeam(payload)
       alert("수정되었습니다.")
       },
-<<<<<<< HEAD
     },
 
     
-=======
-      selectOne(item) {
-        console.log("hi")
-        this.data.select
-        this.newTeam.team_member.push(item)
-      },
-
-      remove (item) {
-        console.log(item)
-        const index = this.newTeam.team_member.indexOf(item.name)
-        if (index >= 0) this.newTeam.team_member.splice(index, 1)
-      },
-    },
-    // add_user(){
-    //   for (const i of this.allUsers) {
-    //     people.push(i)
-    //   }
-    //   return people
-    // },
-
->>>>>>> 0ecc8ac05475fde65c8f725ba6a88cef4b8014a5
 
   created() {
     this.fetchCurrentUser()
