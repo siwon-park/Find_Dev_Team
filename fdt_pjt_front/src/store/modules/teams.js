@@ -11,6 +11,9 @@ export default {
   state: {
     teams: [],
     team: {},
+    // 팀원 검색
+    searchInfos: null,
+    keyword: null,
 
   },
   getters: {
@@ -21,7 +24,7 @@ export default {
   mutations: {
     SET_TEAMS: (state, teams) => state.teams = teams,
     SET_TEAM: (state, team) => state.team = team,
-
+    
   },
   actions: {
     // 전체 팀 조회
