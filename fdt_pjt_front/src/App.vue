@@ -2,7 +2,8 @@
   <div>
     <h1>안녕하세요?</h1>
     <router-link :to="{ name: 'teamNew' }">팀 생성 버튼</router-link><br>
-    <router-link :to="{ name: 'team', params: { teamId: currentUser.my_team.id } }">내 팀 페이지</router-link><br>
+    <!-- 로그인 로직이 아니라 팀 아이디가 있는지 없는지로 판단해야함 -->
+    <router-link v-if="isLoggedIn" :to="{ name: 'team', params: { teamId: currentUser.my_team.id } }">내 팀 페이지</router-link><br>
     <router-link to='/login' v-if="!isLoggedIn">Login</router-link>
     <router-link @click.native="logout()" to='/login' v-if="isLoggedIn">Logout</router-link>
     <router-view></router-view>
