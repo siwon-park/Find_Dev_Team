@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <h4>팀 수정 폼</h4>
     <p>{{ currentUser }}</p>
     <p>{{ allUsers}}</p>
@@ -15,9 +15,23 @@
         <input type="text" v-model="newTeam.intro" placeholder="intro" id="intro">
       </div>
       <!-- 팀 멤버 등록 -->
-      팀 멤버:
-        <label for="team_member"></label>
-        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member">
+        팀 멤버:
+        {{ this.newTeam.team_member }}
+        <!-- <label for="team_member"></label>
+        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
+        <section id="searchbar-section">        
+          <input
+            type="text" 
+            @input="inputChange"
+            v-model="keyInput"
+          >
+          <button>검색</button>
+        </section>
+        <div v-if="keyInput !== ''">
+          <ul v-for="(ret, index) in keyword" :key="index">
+            <li>{{ ret }}</li>
+          </ul>
+        </div>
       <div>
         팀 주제:
         <label for="theme"></label>
@@ -45,7 +59,7 @@
       <input type="submit">
     </form>
 
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -67,21 +81,19 @@ export default {
         common_interest: this.team.common_interest,
         number: this.team.number,
         kakao_chat: this.team.kakao_chat,
-        
       },
-
       total_number: this.team.total_number,
-
+      keyInput: '',
     }
   },
 
   computed: {
-    ...mapGetters(['currentUser', 'allUsers',]),
+    ...mapGetters(['currentUser', 'allUsers', 'keyword']),
   },
 
 
   methods: {
-    ...mapActions(['updateTeam', 'fetchCurrentUser', 'fetchAllUsers']),
+    ...mapActions(['updateTeam', 'fetchCurrentUser', 'fetchAllUsers', 'searchMember']),
     onSubmit(){
       const payload = {
         id: this.team.id,
@@ -92,8 +104,13 @@ export default {
       }
       this.updateTeam(payload)
       alert("수정되었습니다.")
-      },
     },
+
+    inputChange(event) {
+      // console.log(event.target.value)
+      this.searchMember(event.target.value)
+    }
+  },
 
     
 
