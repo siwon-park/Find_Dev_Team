@@ -65,9 +65,9 @@ def member_search(request):
     member = request.GET.get('member', None) # request에서 query 값을 인식한다는 뜻
     
     if member: # 만약 사용자가 입력한 값이 있다면
-        results = User.objects.filter(username__icontains=member)
+        results = User.objects.filter(username__icontains=member, my_team__isnull=True)
     else: # 없으면 모든 객체값을 출력
-        results = User.objects.all()
+        results = User.objects.filter(my_team__isnull=True)
 
     serializer = UserSeializer(results, many=True)
 

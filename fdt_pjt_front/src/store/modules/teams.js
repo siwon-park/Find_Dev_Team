@@ -11,16 +11,19 @@ export default {
   state: {
     teams: [],
     team: {},
+    searchInfos: null,
+    keyword: null,
 
   },
   getters: {
     teams: state => state.teams,
     team: state => state.team,
-
+    keyword: state => state.keyword,
   },
   mutations: {
     SET_TEAMS: (state, teams) => state.teams = teams,
     SET_TEAM: (state, team) => state.team = team,
+    SEARCH_MEMBER: (state, data) => state.keyword = data
 
   },
   actions: {
@@ -88,6 +91,30 @@ export default {
         })
       })
       },
+
+      // 팀 검색
+      searchMember({ commit }, data) {
+        const member = {
+          member: data
+        }
+        axios({
+          url: drf.teams.memebersearch(),
+          method: "get",
+          params: member,
+        })
+        .then(res => {
+          // 데이터를 완전히 지웠을 경우에 대한 처리
+          if (data === "") {
+            res.data = []
+          }
+          // console.log(res.data)
+          commit("SEARCH_MEMBER", res.data)
+        })
+        .catch(err => {
+          console.error(err.response.data)
+        })
+
+      }
 
     }
 

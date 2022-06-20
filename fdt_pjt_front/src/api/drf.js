@@ -37,6 +37,7 @@ export default {
     myteam: teamId => HOST + TEAMS + `${teamId}/`,
     // 팀 생성
     teamcreate: () => HOST + TEAMS + 'create/',
-
+    // 팀원 검색
+    memebersearch: () => HOST + TEAMS + 'search/',
   }
 }
