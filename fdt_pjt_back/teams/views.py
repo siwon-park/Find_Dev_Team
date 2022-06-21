@@ -49,7 +49,16 @@ def myteam(request, team_pk):
             serializer = MyTeamSerializer(instance=team, data=request.data)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
-                serializer = MyTeamSerializer(team)
+                teamID = serializer.data.get('id')
+                team = get_object_or_404(Team, pk=teamID)
+                for usr in request.data['team_member']:
+                    user = get_object_or_404(User, pk=usr.get('id'))
+                    if team.team_member.filter(pk=user.pk).exists():
+                        continue
+                    else:
+                        team.team_member.add(user)
+                # team.team_member.add(request.data.team_member)
+                
                 return Response(serializer.data)
     
     if request.method == 'GET':
