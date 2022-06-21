@@ -51,10 +51,6 @@ def myteam(request, team_pk):
             serializer = MyTeamSerializer(instance=team, data=request.data)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
-<<<<<<< HEAD
-                
-                serializer = MyTeamSerializer(team)
-=======
                 teamID = serializer.data.get('id')
                 team = get_object_or_404(Team, pk=teamID)
                 for usr in request.data['team_member']:
@@ -64,7 +60,6 @@ def myteam(request, team_pk):
                     else:
                         team.team_member.add(user)
                 # team.team_member.add(request.data.team_member)
->>>>>>> 81981cda0a2194f53d2ac7e1a1db22afb942df1e
                 
                 return Response(serializer.data)
     
