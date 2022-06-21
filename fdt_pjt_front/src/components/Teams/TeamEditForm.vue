@@ -17,8 +17,7 @@
       <!-- 팀 멤버 등록 -->
         팀 멤버:
         {{ this.newTeam.team_member }}
-        <!-- <label for="team_member"></label>
-        <input type="text" v-model="newTeam.team_member" placeholder="team_member" id="team_member"> -->
+        {{ this.tempTeamMembers }}
         <section id="searchbar-section">        
           <input
             type="text" 
@@ -29,7 +28,7 @@
         </section>
         <div v-if="keyInput !== ''">
           <ul v-for="(ret, index) in keyword" :key="index">
-            <li>{{ ret }}</li>
+            <li @click="addTeamMember(ret)">{{ ret.username }}</li>
           </ul>
         </div>
       <div>
@@ -84,6 +83,7 @@ export default {
       },
       total_number: this.team.total_number,
       keyInput: '',
+      tempTeamMembers: [],
     }
   },
 
@@ -95,10 +95,12 @@ export default {
   methods: {
     ...mapActions(['updateTeam', 'fetchCurrentUser', 'fetchAllUsers', 'searchMember']),
     onSubmit(){
+      this.newTeam.team_member.push(...this.tempTeamMembers)
       const payload = {
         id: this.team.id,
         leader: this.currentUser.id,
         total_number: this.total_number,
+        team_member: this.newTeam.team_member,
         common_interest: this.newTeam.common_interest,
         ...this.newTeam,
       }
@@ -107,8 +109,25 @@ export default {
     },
 
     inputChange(event) {
-      // console.log(event.target.value)
       this.searchMember(event.target.value)
+    },
+
+    // 유저를 추가 및 삭제
+    addTeamMember(member) {
+      let flag = false
+      let idx = 0
+      for (const addUser of this.tempTeamMembers) {
+        if (addUser === member) {
+          flag = true
+          idx = this.tempTeamMembers.indexOf(addUser)
+          break
+        }
+      }
+      if (!flag) {
+        this.tempTeamMembers.push(member)
+      } else {
+        this.tempTeamMembers.splice(idx, 1)
+      }
     }
   },
 

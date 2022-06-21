@@ -64,9 +64,7 @@ export default {
       .then(res => {
         commit('SET_TEAM', res.data)
         const team_data = {id: res.data.id, name: res.data.name}
-        console.log(res.data)
         userInfo.my_team = team_data
-        console.log(userInfo)
         this.commit('SET_CURRENT_USER', userInfo)
         router.push({
           name: 'team',
@@ -76,15 +74,17 @@ export default {
     },
 
     // 팀 수정
-    updateTeam({ commit, getters }, { id, name, intro, leader, total_number, theme, team_member,common_interest, number, kakao_chat }){
+    updateTeam({ commit, getters }, { id, name, intro, leader, total_number, theme, team_member, common_interest, number, kakao_chat }){
+      console.log(team_member)
       axios({
         url: drf.teams.myteam(id),
         method: 'put',
-        data:  {name, intro, leader, total_number, theme, team_member, common_interest, number, kakao_chat },
+        data: { name, intro, leader, total_number, theme, team_member, common_interest, number, kakao_chat },
         headers: getters.authHeader,
       })
       .then(res => {
         commit('SET_TEAM', res.data)
+        console.log(res.data)
         router.push({
           name: 'team',
           params: { teamId: getters.team.id }
@@ -113,9 +113,7 @@ export default {
         .catch(err => {
           console.error(err.response.data)
         })
-
       }
-
     }
 
   }
