@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container modal">
     <form @submit.prevent="signup(signup_credentials)">
       <div>
         <label for="username">Username: </label>
@@ -48,7 +48,7 @@
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'SignUpForm',
+  name: 'SignUpModal',
   data() {
     return {
       signup_credentials: {
@@ -70,6 +70,25 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .container {
+    background-color: #fcf3e1;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 5px 5px;
+  }
+
+  .modal {
+    width: 500px;
+    height: 300px;
+    position: fixed;
+    display: flex;
+    left: 0;
+    right: 0;
+    top: 100px;
+    bottom: 0;
+    z-index: 12;
+  }
+
 
 </style>

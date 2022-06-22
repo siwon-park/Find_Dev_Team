@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import MainPage from '@/views/MainPage/MainPage.vue'
 import LoginForm from '@/views/Accounts/LoginForm.vue'
 import MyTeamPageView from '@/views/Teams/MyTeamPageView.vue'
-import SignUpForm from '@/views/Accounts/SignUpForm.vue'
+import SignUpModal from '@/views/Accounts/SignUpModal.vue'
 import MyPage from '@/views/MyPage/MyPage.vue'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
 import TeamEditView from '@/views/Teams/TeamEditView.vue'
@@ -25,7 +25,7 @@ const routes = [
   { // 회원가입 페이지
     path: '/signup',
     name: 'signup',
-    component: SignUpForm
+    component: SignUpModal
   },
   { // 마이페이지
     path: '/mypage',
