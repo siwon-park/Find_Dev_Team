@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <SignUpModal v-if="modalToggle" ></SignUpModal>
+    <SignUpModal v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></SignUpModal>
   </div>
 </template>
 
@@ -51,19 +51,15 @@ export default {
         username: '',
         password: '',
       },
-      // sign_credentials: {
-      //   username: '',
-      //   password1: '',
-      //   password2: '',
-      //   email:'',
-      // },
-
     }
   },
   methods: {
     ...mapActions(['login',]),
     openModal(){
       this.modalToggle = !this.modalToggle
+    },
+    closeModal(data) {
+      this.modalToggle = data
     }
   }
 }
