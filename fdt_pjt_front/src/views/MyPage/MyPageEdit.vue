@@ -72,11 +72,13 @@ export default {
   methods: {
     ...mapActions(['fetchCurrentUser', 'updateProfile']),
     updateRequest() {
-      this.updateProfile({nickname: this.currentUser.nickname, region: this.currentUser.region, 
+      const userData = {nickname: this.currentUser.nickname, region: this.currentUser.region, 
       sex: this.currentUser.sex, position:this.currentUser.position, major:this.currentUser.major,
       group: this.currentUser.group, img: this.currentUser.img, intro: this.currentUser.intro,
       kakao_chat: this.currentUser.kakao_chat, github_url: this.currentUser.github_url, 
-      portfolio_url: this.currentUser.portfolio_url, strength: this.currentUser.strength})
+      portfolio_url: this.currentUser.portfolio_url, strength: this.currentUser.strength,
+      ...this.currentUser}
+      this.updateProfile(userData)
     }
   },
   created() {
