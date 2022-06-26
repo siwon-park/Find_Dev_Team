@@ -1,5 +1,7 @@
 <template>
+<!-- 전체 모달 화면-->
 <div class="my-modal" @click="modalCloseOutside()">
+  <!-- 보이는 화면 -->
   <div class="container modal-content">
     <div class="row">
       <div class="col d-flex justify-content-between">
@@ -100,7 +102,7 @@ export default {
       this.$emit('modal-close-btn', false)
     },
     modalCloseOutside() {
-      const modal = document.querySelector('.my-modal')
+      const modal = document.querySelector('.my-modal') // my-modal에 대한 부분만 선택 됨
       window.onclick = function (event) {
         if (event.target === modal) {
           modal.style.display = "none";

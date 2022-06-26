@@ -12,7 +12,7 @@
             <div class="circle" style="background-color: #67769d;">+</div>
           </div>
           <div class="d-flex">
-            <div class="rectangle">X</div>
+            <div class="rectangle" @click="modalCloseBtn()">X</div>
             <div class="arrow">◀</div>
           </div>
         </div>
@@ -39,26 +39,41 @@
           팀 : {{ this.currentUser.my_team.name }}
         </div>
         <button>
-          <router-link class="update" to="/mypage/edit">프로필 수정</router-link>
+          <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
+          <div @click="openModal()" class="update">프로필 수정</div>
         </button>
       </div>
     </div>
-    
-    
+    <MyPageEdit v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></MyPageEdit>
   </div>
     
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
+
 export default {
   name: 'MyPage',
+  components: {
+    MyPageEdit,
+  },
+  data() {
+    return {
+      modalToggle: false,
+    }
+  },
   computed: {
     ...mapGetters(['currentUser',])
   },
   methods: {
-    ...mapActions(['fetchCurrentUser',])
-
+    ...mapActions(['fetchCurrentUser',]),
+    openModal(){
+      this.modalToggle = !this.modalToggle
+    },
+    closeModal(data) {
+      this.modalToggle = data
+    }
   },
   created() {
     this.fetchCurrentUser()

@@ -1,3 +1,4 @@
+from asyncore import read
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from skills.models import Knowledge
@@ -95,7 +96,8 @@ class MyPageSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-
+        read_only_fields = ('my_team', )
+        
 # 북마크 조회, 등록 및 해제
 class BookmarkSerializers(serializers.ModelSerializer):
 
