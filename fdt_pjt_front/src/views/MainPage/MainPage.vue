@@ -2,11 +2,14 @@
   <div>
     <h1>메인페이지</h1>
     <div>
-      <v-app>
-      <TeamList v-for="(eachTeam, index) in teams" 
-      :key="index"
-      :eachTeam="eachTeam"></TeamList>
-      </v-app>
+      <div>
+        <Flicking class="slide" :options="{ circular: true }">
+          <TeamList v-for="(eachTeam, index) in teams" 
+          :key="index"
+          :eachTeam="eachTeam">
+          </TeamList>
+        </Flicking>
+      </div>
       <hr>
       <hr>
       <MemberList v-for="eachUser in allUsers" :key="eachUser.id" :eachUser="eachUser"></MemberList>
@@ -16,6 +19,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import {Flicking} from "@egjs/vue-flicking"
 import TeamList from '@/components/MainPage/TeamList.vue'
 import MemberList from '@/components/MainPage/MemberList.vue'
 
@@ -24,6 +28,7 @@ export default {
   components: {
     TeamList,
     MemberList,
+    Flicking,
   },
   methods: {
     ...mapActions(['fetchTeams', 'fetchAllUsers'])
