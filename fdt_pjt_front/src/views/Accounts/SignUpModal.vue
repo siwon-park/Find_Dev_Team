@@ -214,6 +214,4 @@ export default {
       box-shadow: black 0px 0px 0px;
     }
 
-
-
 </style>

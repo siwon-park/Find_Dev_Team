@@ -17,7 +17,7 @@ export default {
     // 회원탈퇴
     signout: () => HOST + 'accounts/signout/',
     // 나의 사용자 조회/수정
-    mypage: () => HOST + `account/user/`,
+    mypage: () => HOST + 'account/user/',
     // 다른 사용자 조회
     profile: userId => HOST + ACCOUNTS + `${userId}/`,
     // 북마크 조회/등록/해제
