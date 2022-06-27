@@ -1,6 +1,5 @@
 <template>
   <div class="my-modal" @click="modalCloseOutside()">
-    <!-- 보이는 화면 -->
     <div class="container modal-content">
       <div class="row">
         <div class="col d-flex justify-content-between">
