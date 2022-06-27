@@ -113,6 +113,7 @@ export default {
         }
         // console.log(this.currentUser.my_team)
         this.updateProfile(userData)
+        this.$emit('modal-close-btn', false)
     },
   },
   created() {
