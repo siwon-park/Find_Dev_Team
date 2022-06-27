@@ -51,9 +51,9 @@ export default {
 <style scoped>
   .container {
     background-color: #fcf3e1;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-radius: 20px;
-    box-shadow: 5px 5px; 
+    box-shadow: 10px 10px; 
   }
 
   .my-modal {
@@ -62,7 +62,7 @@ export default {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     overflow: auto;
     padding-top: 50px;
   }
