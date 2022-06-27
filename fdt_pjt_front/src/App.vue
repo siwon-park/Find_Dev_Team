@@ -36,5 +36,18 @@ export default {
 </script>
 
 <style>
+  * {
+  font-family: 'Gowun Dodum', serif;
+   }
 
+  body {
+    /* background: linear-gradient(0deg, #B1D8F9, #D7CFF6, #FEEDD8); */
+    /* background: radial-gradient(#B1D8F9, #D7CFF6, #FEEDD8); */
+    background:
+    linear-gradient(217deg, #B1D8F9, rgba(255,0,0,0) 70.71%),
+    linear-gradient(127deg, #D7CFF6, rgba(0,255,0,0) 70.71%),
+    linear-gradient(336deg, #FEEDD8, rgba(0,0,255,0) 70.71%);
+    height: 100vh;
+
+  }
 </style>

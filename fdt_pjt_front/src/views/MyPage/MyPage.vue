@@ -5,15 +5,14 @@
       <!-- 사진 및 기본 정보  -->
       <div class="row">
         <div class="col d-flex">
-          <div class="d-flex title">
-            <!-- <div>나의 프로필</div> -->
+          <div class="d-flex" >
             <div class="circle" style="background-color: #c5af3d;">•</div>
             <div class="circle" style="background-color: #e3bfc8;">-</div>
             <div class="circle" style="background-color: #67769d;">+</div>
           </div>
           <div class="d-flex">
-            <div class="rectangle" @click="modalCloseBtn()">X</div>
-            <div class="arrow">◀</div>
+            <div class="rectangle" @click="goBack">X</div>
+            <div class="arrow" @click="goBack">◀</div>
           </div>
         </div>
         <div class="first d-flex">
@@ -52,6 +51,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
+import router from '@/router'
 
 export default {
   name: 'MyPage',
@@ -73,31 +73,35 @@ export default {
     },
     closeModal(data) {
       this.modalToggle = data
-    }
+    },
+    goBack() {
+        router.push({ name: 'main' })
+      }
   },
   created() {
-    this.fetchCurrentUser()
+    this.fetchCur5E2962rentUser()
   }
 }
 </script>
 
 <style scoped>
+  
   .container {
     background-color: #fcf3e1;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-radius: 20px;
-    box-shadow: 5px 5px;
+    box-shadow: 10px 10px;
     width: 700px;
   }
 
   .title{
+    font-family: 'Gowun Dodum', sans-serif;
     font-weight: bolder;
-    font-size: 40px;
+    font-size: 60px;
     text-align: center;
-    padding-bottom: 15px;
-    color: white;
-    /* -webkit-text-stroke: 1px #b437dd; */
-    text-shadow: #b437dd 4px 4px 5px;
+    padding-bottom: 35px;
+    color: #FDFDFD;
+    text-shadow: #E3B8D3 1px 1px,#E3B8D3 0px 0px,#E3B8D3 1px 1px,#E3B8D3 2px 2px,#E3B8D3 3px 3px,#E3B8D3 4px 4px,#E3B8D3 5px 5px,#E3B8D3 6px 6px,#E3B8D3 7px 7px,#E3B8D3 8px 8px,#E3B8D3 9px 9px,#E3B8D3 10px 10px,#E3B8D3 11px 11px,#E3B8D3 12px 12px,#E3B8D3 13px 13px,#E3B8D3 14px 14px,#E3B8D3 15px 15px,#E3B8D3 16px 16px,#E3B8D3 17px 17px,#E3B8D3 18px 18px,#E3B8D3 19px 19px,#E3B8D3 20px 20px;
 
   }
 
@@ -123,10 +127,11 @@ export default {
     color: black;
     text-align: center;
     font-weight: bolder;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     font-size: 14px;
     margin-right: 10px;
     line-height: 15px;
+    margin-top: 10px;
   }
 
   .rectangle{
@@ -137,12 +142,13 @@ export default {
     color: white;
     text-align: center;
     font-weight: bolder;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     font-size: 15px;
     line-height: 15px;
     box-shadow: black 2px 2px 0px;
     margin-right: 10px;
     cursor: pointer;
+    margin-top: 10px;
     
   }
 
@@ -159,11 +165,12 @@ export default {
     color: white;
     text-align: center;
     font-weight: bolder;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     font-size: 15px;
     line-height: 15px;
     box-shadow: black 2px 2px 0px;
     cursor: pointer;
+    margin-top: 10px;
     
   }
 
@@ -175,7 +182,7 @@ export default {
   button{
     background-color: #DFFF80;
     box-shadow: black 4px 4px 0px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     border-radius: 8px;
     transition: transform 200ms, box-shadow 200ms;
     width : 120px;
