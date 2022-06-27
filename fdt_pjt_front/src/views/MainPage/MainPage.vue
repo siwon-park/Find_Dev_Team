@@ -2,17 +2,26 @@
   <div>
     <h1>메인페이지</h1>
     <div>
-      <div>
-        <Flicking class="slide" :options="{ circular: true }">
-          <TeamList v-for="(eachTeam, index) in teams" 
-          :key="index"
-          :eachTeam="eachTeam">
-          </TeamList>
+      <div class="container-fluid">
+        <Flicking :options="{ circular: true }">
+          <div class="d-flex">
+            <TeamList v-for="(eachTeam, index) in teams" 
+            :key="index"
+            :eachTeam="eachTeam"
+            class="mx-3">
+            </TeamList>
+          </div>
         </Flicking>
       </div>
       <hr>
       <hr>
-      <MemberList v-for="eachUser in allUsers" :key="eachUser.id" :eachUser="eachUser"></MemberList>
+      <div class="d-flex">
+        <MemberList 
+        v-for="eachUser in allUsers" 
+        :key="eachUser.id" 
+        :eachUser="eachUser"
+        class="mx-3"></MemberList>
+      </div>
     </div>
   </div>
 </template>
