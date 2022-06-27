@@ -1,4 +1,3 @@
-from asyncore import read
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from skills.models import Knowledge
@@ -6,6 +5,11 @@ from dj_rest_auth.registration.serializers import RegisterSerializer
 
 from teams.models import Team
 User = get_user_model()
+
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = ('id', 'name', )
 
 # 로그인/회원가입/로그아웃/비밀번호 찾기/회원 탈퇴
 class AccountSignUpSerializer(RegisterSerializer):
@@ -47,11 +51,11 @@ class AccountSerializer(serializers.ModelSerializer):
     github_url = serializers.CharField(max_length=200)
     portfolio_url = serializers.CharField(max_length=200)
     strength = serializers.CharField(max_length=50)
-    my_team = serializers.CharField(max_length=50)
+    my_team = TeamSerializer(read_only=True)
 
-    def to_representation(self, instance):
-        self.fields['my_team'] = TeamSerializer(read_only=True)
-        return super(AccountSerializer, self).to_representation(instance)
+    # def to_representation(self, instance):
+    #     self.fields['my_team'] = TeamSerializer(read_only=True)
+    #     return super(AccountSerializer, self).to_representation(instance)
 
     class Meta:
         model = User
@@ -75,10 +79,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
         return data
 
-class TeamSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Team
-        fields = ('id', 'name', )
+
 
 
 
