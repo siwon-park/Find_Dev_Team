@@ -108,7 +108,7 @@ export default {
       color: white;
       text-align: center;
       font-weight: bolder;
-      border: 2px solid black;
+      /* border: 2px solid black; */
       font-size: 15px;
       line-height: 15px;
       box-shadow: black 2px 2px 0px;
@@ -128,7 +128,7 @@ export default {
       color: white;
       text-align: center;
       font-weight: bolder;
-      border: 2px solid black;
+      /* border: 2px solid black; */
       font-size: 15px;
       line-height: 15px;
       box-shadow: black 2px 2px 0px;

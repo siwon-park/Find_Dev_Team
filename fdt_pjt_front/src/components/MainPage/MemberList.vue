@@ -7,7 +7,7 @@
     <div class="flip-card-back">
       <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
         <div class="each-content">
-          닉네임: {{this.eachUser.nickname}}
+          닉네임: {{this.eachUser.nickname}} <a role="button" @click="followUser()"><i class="fa-solid fa-star"></i></a>
         </div>
         <div class="each-content">
           포지션: {{this.eachUser.position}}
@@ -35,17 +35,21 @@ export default {
   props: {
     eachUser: {
       type:Object,
-    }
+    },
+
   },
   computed: {
     ...mapGetters(['allUsers',])
   },
   methods: {
-    ...mapActions(['fetchAllUsers',])
+    ...mapActions(['fetchAllUsers', 'setBookmark',]),
+    followUser() {
+      this.setBookmark(this.eachUser.id)
+    }
   },
   created() {
     this.fetchAllUsers()
-  }
+  },
 }
 </script>
 
@@ -57,6 +61,8 @@ export default {
 
 .each-content {
   border: 1px solid #f1f1f1;
+  border-radius: 10px;
+  background-color: white;
   margin: 1px;
   height: 40px;
   font-size: 18px;
@@ -68,7 +74,7 @@ export default {
   background-color: transparent;
   width: 300px;
   height: 350px;
-  border: 1px solid #f1f1f1;
+  /* border: 1px solid #f1f1f1; */
   perspective: 1000px;
   border-radius: 20px;
 }
