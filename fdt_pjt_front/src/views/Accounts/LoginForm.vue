@@ -3,9 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="col d-flex" style="height:40px;">
-          <div class="circle" style="background-color: #c5af3d;">•</div>
-          <div class="circle" style="background-color: #e3bfc8;">-</div>
-          <div class="circle" style="background-color: #67769d;">+</div>
+          <div class="d-flex align-items-center">
+            <div class="circle" style="background-color: #c5af3d;">•</div>
+            <div class="circle" style="background-color: #e3bfc8;">-</div>
+            <div class="circle" style="background-color: #67769d;">+</div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -90,10 +92,6 @@ export default {
   background-color: white;
   border-radius: 5px;
   border: 1px solid black;
-}
-
-span {
-  font: small-caps bold 20px sans-serif;
 }
 
 a {
