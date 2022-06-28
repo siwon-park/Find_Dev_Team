@@ -5,7 +5,7 @@
       <!-- 사진 및 기본 정보  -->
       <div class="row">
         <div class="col d-flex">
-          <div class="d-flex" >
+          <div class="d-flex">
             <div class="circle" style="background-color: #c5af3d;">•</div>
             <div class="circle" style="background-color: #e3bfc8;">-</div>
             <div class="circle" style="background-color: #67769d;">+</div>
@@ -80,7 +80,11 @@ export default {
   },
   created() {
     this.fetchCurrentUser()
+<<<<<<< HEAD
   }
+=======
+  },
+>>>>>>> 8cd0b265b375581fad6f807a78031190e44084db
 }
 </script>
 

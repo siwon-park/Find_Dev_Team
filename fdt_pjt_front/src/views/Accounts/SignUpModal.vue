@@ -4,13 +4,13 @@
   <!-- 보이는 화면 -->
   <div class="container modal-content">
     <div class="row">
-      <div class="col d-flex justify-content-between">
-        <div class="d-flex">
+      <div class="col d-flex justify-content-between" style="height:40px;">
+        <div class="d-flex align-items-center">
           <div class="circle" style="background-color: #c5af3d;">•</div>
           <div class="circle" style="background-color: #e3bfc8;">-</div>
           <div class="circle" style="background-color: #67769d;">+</div>
         </div>
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
           <div class="rectangle mx-1" @click="modalCloseBtn()">X</div>
           <div class="arrow mx-1">◀</div>
         </div>
@@ -139,10 +139,6 @@ export default {
     background-color: white;
     border-radius: 5px;
     border: 1px solid black;
-  }
-
-  span {
-    font: bold 20px sans-serif;
   }
 
   .btn {
