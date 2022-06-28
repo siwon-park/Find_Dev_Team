@@ -79,7 +79,7 @@ export default {
       }
   },
   created() {
-    this.fetchCur5E2962rentUser()
+    this.fetchCurrentUser()
   }
 }
 </script>
