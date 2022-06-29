@@ -13,7 +13,6 @@ export default {
     team: {},
     searchInfos: null,
     keyword: null,
-
   },
   getters: {
     teams: state => state.teams,
@@ -22,6 +21,7 @@ export default {
   },
   mutations: {
     SET_TEAMS: (state, teams) => state.teams = teams,
+    // 라우터 로직을 바꿔봐야함
     SET_TEAM: (state, team) => state.team = team,
     SEARCH_MEMBER: (state, data) => state.keyword = data
 
@@ -84,11 +84,11 @@ export default {
       })
       .then(res => {
         commit('SET_TEAM', res.data)
-        console.log(res.data)
-        router.push({
-          name: 'team',
-          params: { teamId: getters.team.id }
-        })
+        // 팀 수정이 모달이니 라우터를 돌릴 필요가 없음
+        // router.push({
+        //   name: 'team',
+        //   params: { teamId: getters.team.id }
+        // })
       })
       },
 

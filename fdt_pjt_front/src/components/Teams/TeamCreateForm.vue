@@ -37,7 +37,7 @@
               </tbody>
             </table>
             <div class="my-3">
-              <button class="btn">수정하기</button>
+              <button class="btn">팀 생성하기</button>
             </div>
           </form>
       </div>

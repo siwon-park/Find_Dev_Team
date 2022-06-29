@@ -102,7 +102,6 @@ a {
     color: black;
     text-align: center;
     font-weight: bolder;
-    border: 2px solid black;
     font-size: 14px;
     margin-right: 10px;
     line-height: 15px;

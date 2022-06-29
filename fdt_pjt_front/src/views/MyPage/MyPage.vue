@@ -80,11 +80,7 @@ export default {
   },
   created() {
     this.fetchCurrentUser()
-<<<<<<< HEAD
   }
-=======
-  },
->>>>>>> 8cd0b265b375581fad6f807a78031190e44084db
 }
 </script>
 
