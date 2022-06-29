@@ -33,12 +33,21 @@
         </div>
       </div>
     </div>
+    <!-- 에러부분 추가 작업 필요 -->
+    <!-- <p v-for="(errors, field) in authError" :key="field">
+      {{ field }}
+      <ul>
+        <li v-for="(error, idx) in errors" :key="idx">
+          {{ error }}
+        </li>
+      </ul>
+    </p> -->
     <SignUpModal v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></SignUpModal>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import SignUpModal from '@/views/Accounts/SignUpModal.vue'
 
 export default {
@@ -54,6 +63,9 @@ export default {
         password: '',
       },
     }
+  },
+  computed: {
+    ...mapGetters(['authError',]),
   },
   methods: {
     ...mapActions(['login',]),

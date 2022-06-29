@@ -3,7 +3,7 @@
     <h1>메인페이지</h1>
     <div>
       <div class="container-fluid">
-        <Flicking :options="{ circular: true }" :plugins="plugins">
+        <Flicking :options="{ circular: true }">
           <div class="d-flex justify-content-center">
             <TeamList v-for="(eachTeam, index) in teams" 
             :key="index"
