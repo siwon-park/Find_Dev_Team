@@ -83,8 +83,12 @@
                   <label for="member">팀 멤버</label>
                 </td>
                 <td id="member">
-                  {{ this.newTeam.team_member }}
-                  {{ this.tempTeamMembers }}
+                  <span v-for="teamMemberName in currentTeamMember" :key="teamMemberName">
+                    <span class="mx-1">{{teamMemberName}}</span>
+                  </span>
+                  <span v-for="tempTeamMemberName in this.tempTeamMembersForRender" :key="tempTeamMemberName">
+                    <span class="mx-1">{{tempTeamMemberName}}</span>
+                  </span>
                 </td>
               </tr>
               <tr>
@@ -108,7 +112,6 @@
                   </div>
                 </td>
               </tr>
-              
             </tbody>
           </table>
           <div class="my-3">
@@ -143,14 +146,21 @@ export default {
       },
       total_number: this.team.total_number,
       keyInput: '',
-      tempTeamMembers: [],
+      tempTeamMembers: [], // 데이터 저장용
+      tempTeamMembersForRender: [], // 렌더링용
     }
   },
 
   computed: {
     ...mapGetters(['currentUser', 'allUsers', 'keyword']),
+    currentTeamMember() {
+      const curTM = []
+      for (const member of this.team.team_member) {
+        curTM.push(member.username)
+      }
+      return curTM
+    }
   },
-
 
   methods: {
     ...mapActions(['updateTeam', 'fetchCurrentUser', 'fetchAllUsers', 'searchMember']),
@@ -197,8 +207,10 @@ export default {
       }
       if (!flag) {
         this.tempTeamMembers.push(member)
+        this.tempTeamMembersForRender.push(member.username)
       } else {
         this.tempTeamMembers.splice(idx, 1)
+        this.tempTeamMembersForRender.splice(idx, 1)
       }
     }
   },
@@ -236,10 +248,6 @@ export default {
     background-color: white;
     border-radius: 5px;
     /* border: 1px solid black; */
-  }
-
-  span {
-    font: bold 20px sans-serif;
   }
 
   .btn {

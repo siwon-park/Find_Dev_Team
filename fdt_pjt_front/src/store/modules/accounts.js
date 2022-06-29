@@ -93,7 +93,7 @@ export default {
         dispatch('removeToken')
         alert('성공적으로 로그아웃되었습니다.')
         localStorage.removeItem('vuex')
-        router.push({name:"login"})
+        router.push({ name: 'main' })
       })
       .catch(err => {
         console.error(err.response.data)
@@ -112,7 +112,7 @@ export default {
         .then(() => {
           localStorage.removeItem('vuex')
           alert('성공적으로 회원탈퇴 처리')
-          router.push({name: 'login'})
+          router.push({ name: 'main' })
         })
         .catch(err => {
           console.error(err.response.data)
@@ -135,14 +135,11 @@ export default {
         .catch(err => {
           if (err.response.state === 401) {
             dispatch('removeToken')
-            router.push({name: 'login'})
+            // router.push({name: 'login'})
           } else if (err.response.state === 404) {
             router.push({name: 'NotFound404'})
           }
         })
-      } else {
-        alert('로그인이 필요한 서비스입니다.')
-        router.push({name: 'login'})
       }
     },
 

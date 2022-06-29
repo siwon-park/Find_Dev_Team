@@ -24,7 +24,12 @@
             현재 인원 수 : {{ team.team_member.length }}<br>
             모집 인원 : {{ team.total_number }}<br>
             카카오 오픈챗 : {{ team.kakao_chat }}<br>
-            팀 멤버 : {{ team.team_member }}
+            팀 멤버 :
+            <span>
+              <span v-for="name in teamMemberName" :key="name">
+                <span class="mx-1">{{name}}</span>
+              </span>
+            </span>
           </div>
         </div>
         <button>
@@ -63,6 +68,13 @@ export default {
   },
   computed:{
     ...mapGetters(['team']),
+    teamMemberName() {
+      const nameList = []
+      for (const user of this.team.team_member) {
+        nameList.push(user.username)
+      }
+      return nameList
+    }
   },
   methods:{
     ...mapActions([
