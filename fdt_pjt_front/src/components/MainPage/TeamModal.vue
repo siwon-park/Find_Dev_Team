@@ -1,23 +1,78 @@
 <template>
 <div class="my-modal" @click="modalCloseOutside()">
   <div class="container modal-content">
-    <div class="row">
-      <div class="col d-flex justify-content-between align-items-center" style="height:40px;">
-        <div class="d-flex">
-          <div class="circle" style="background-color: #c5af3d;">•</div>
-          <div class="circle" style="background-color: #e3bfc8;">-</div>
-          <div class="circle" style="background-color: #67769d;">+</div>
-        </div>
-        <div class="d-flex">
-          <div class="rectangle mx-1" @click="modalCloseBtn()">X</div>
-          <div class="arrow mx-1">◀</div>
-        </div>
-      </div>
+    <div class="d-flex" style="justify-content: right;">
+      <div class="rectangle mx-1" @click="modalCloseBtn()">↩</div>
     </div>
     <div class="row">
-      <h5>팀 이름: {{ this.eachTeamData.name }}</h5>
-      <p>팀 소개: {{ this.eachTeamData.intro }}</p>
-      {{this.eachTeamData}}
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="name">팀 명</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.name }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="intro">팀 소개</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.intro }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="theme">팀 주제</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.theme }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="common_interest">팀 공통흥미</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.common_interest }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="total_number">현재 인원/모집 인원</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.number }}/{{ this.eachTeamData.total_number }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="kakao_chat">팀 오픈챗</label>
+            </td>
+            <td>
+              {{ this.eachTeamData.kakao_chat }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="member">팀 멤버</label>
+            </td>
+            <td id="member">
+              {{ this.eachTeamData.team_member }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="leader">리더</label>
+            </td>
+            <td id="member">
+              {{ this.eachTeamData.leader }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -50,10 +105,9 @@ export default {
 
 <style scoped>
   .container {
-    background-color: #fcf3e1;
-    /* border: 2px solid black; */
-    border-radius: 20px;
-    box-shadow: 10px 10px; 
+    background-color: #e1f6fc;
+    width: 40%;
+    border: 10px solid #120c65
   }
 
   .my-modal {
@@ -62,28 +116,16 @@ export default {
     left: 0;
     top: 0;
     width: 100%;
-    /* height: 100vh; */
     overflow: auto;
-    padding-top: 50px;
+    padding-top: 30px;
   }
 
   span {
     font: bold 20px sans-serif;
   }
 
-  .btn {
-    background-color: #DFFF80;
-    border: 1px solid black;
-    box-shadow: 3px 3px;
-    transition: transform 200ms, box-shadow 200ms;
-  }
-
-  .btn:active {
-    transform: translateY(4px) translateX(4px);
-  }
-
   .col {
-      background-color: #f7d1ff;
+      background-color: #88d4f8;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
   }
@@ -102,18 +144,19 @@ export default {
     }
 
   .rectangle{
-      height: 20px;
-      width: 20px;
-      background-color: #e33c3c;
-      color: white;
-      text-align: center;
-      font-weight: bolder;
-      /* border: 2px solid black; */
-      font-size: 15px;
-      line-height: 15px;
-      box-shadow: black 2px 2px 0px;
-      transition: transform 100ms, box-shadow 100ms;
-      cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 25px;
+    width: 25px;
+    background-color: #4d3ce3;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+    line-height: 15px;
+    box-shadow: black 2px 2px 0px;
+    transition: transform 100ms, box-shadow 100ms;
+    cursor: pointer;
     }
 
   .rectangle:active{
@@ -121,23 +164,11 @@ export default {
     box-shadow: black 0px 0px 0px;
   }
 
-  .arrow{
-      height: 20px;
-      width: 20px;
-      background-color: rgb(43, 154, 69);
-      color: white;
-      text-align: center;
-      font-weight: bolder;
-      /* border: 2px solid black; */
-      font-size: 15px;
-      line-height: 15px;
-      box-shadow: black 2px 2px 0px;
-      transition: transform 100ms, box-shadow 100ms;
-    }
 
-  .arrow:active{
-    transform: translateY(2px) translateX(2px);
-    box-shadow: black 0px 0px 0px;
+  table{
+    text-align: center;
+    font-size: 20px;
   }
+
 
 </style>

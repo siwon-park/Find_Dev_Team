@@ -37,10 +37,15 @@
           약점 : {{ this.currentUser.strength }}<br>
           팀 : {{ this.currentUser.my_team.name }}
         </div>
-        <button>
-          <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
-          <div @click="openModal()" class="update">프로필 수정</div>
-        </button>
+        <div class="d-flex">
+          <button>
+            <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
+            <div @click="openModal()" class="update">프로필 수정</div>
+          </button>
+          <button>
+            <div class="update">탈퇴하기</div>
+          </button>
+        </div>
       </div>
     </div>
     <MyPageEdit v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></MyPageEdit>
@@ -80,11 +85,7 @@ export default {
   },
   created() {
     this.fetchCurrentUser()
-<<<<<<< HEAD
   }
-=======
-  },
->>>>>>> 8cd0b265b375581fad6f807a78031190e44084db
 }
 </script>
 

@@ -1,18 +1,14 @@
 <template>
 <div>
-  <div class="container">
-    <div class="row">
-      <div class="col d-flex align-items-center" style="height:40px;">
-        <div class="circle" style="background-color: #c5af3d;">•</div>
-        <div class="circle" style="background-color: #e3bfc8;">-</div>
-        <div class="circle" style="background-color: #67769d;">+</div>
-      </div>
+  <div class="container" >
+    <div class="row top">
+      <div class="col d-flex align-items-center">{{ this.eachTeam.number }}/{{ this.eachTeam.total_number }}</div>
     </div>
-    <div class="row">
-      <h5 class="card-title">팀 이름: {{ this.eachTeam.name }}</h5>
-      <p class="card-text">팀 소개: {{ this.eachTeam.intro }}</p>
-      <div class="d-flex justify-content-left">
-          <button class="btn" @click="openModal()">자세히보기</button>
+    <div class="row new">
+      <div class="content-title">{{ this.eachTeam.name }}</div>
+      <div class="content-text">{{ this.eachTeam.intro }}</div>
+      <div class="content-btn">
+        <button class="btn" @click="openModal()">자세히보기</button>
       </div>
     </div>
   </div>
@@ -60,20 +56,28 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  background-color: #fcf3e1;
-  /* border: 2px solid black; */
-  border-radius: 20px;
+.new {
+  background-color: #ffe08b;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   box-shadow: 10px 10px;
   width: 500px;
   height: 300px;
 }
 
+.col {
+    background-color: #edca67;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 40px;
+}
+
 .btn {
-  background-color: #DFFF80;
-  border: 1px solid black;
+  background-color: #76b9ed;
   box-shadow: 3px 3px;
   transition: transform 200ms, box-shadow 200ms;
+  height: 40px;
 }
 
 .btn:active {
@@ -89,23 +93,24 @@ a {
   color: black;
 }
 
-.col {
-    background-color: #f7d1ff;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.top {
+  width: 230px;
 }
 
-.circle{
-    border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    color: black;
-    text-align: center;
-    font-weight: bolder;
-    border: 2px solid black;
-    font-size: 14px;
-    margin-right: 10px;
-    line-height: 15px;
-  }
+.content-title{
+  font-size: 30px;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.content-text{
+  font-size: 25px;
+  text-align: center;
+  
+}
+
+.content-btn{
+  text-align: center;
+}
 
 </style>

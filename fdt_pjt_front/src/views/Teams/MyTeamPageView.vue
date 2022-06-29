@@ -30,6 +30,7 @@
         <button>
           <div @click="openModal()" class="update">팀 정보 수정</div>
         </button>
+        
 
         <!-- <div>
           <router-link :to="{ name: 'teamEdit', params: { teamId } }">
