@@ -7,7 +7,7 @@
     <div class="flip-card-back">
       <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
         <div class="each-content">
-          닉네임: {{this.eachUser.nickname}} <a role="button" @click="followUser()"><i class="fa-solid fa-star"></i></a>
+          닉네임: {{this.eachUser.nickname}} <a role="button" @click="followUser()"><i class="fa-solid fa-star" v-bind:class="{ bookmark: isBookmarked }"></i></a>
         </div>
         <div class="each-content">
           포지션: {{this.eachUser.position}}
@@ -39,7 +39,16 @@ export default {
 
   },
   computed: {
-    ...mapGetters(['allUsers',])
+    ...mapGetters(['allUsers', 'bookmarkings']),
+    isBookmarked() {
+      const bookmarkedUser = this.bookmarkings.bookmarking
+      for (const userId of bookmarkedUser) {
+        if (userId === this.eachUser.id) {
+          return true
+        }
+      }
+      return false
+    }
   },
   methods: {
     ...mapActions(['fetchAllUsers', 'setBookmark',]),
@@ -69,6 +78,13 @@ export default {
   line-height: 40px;
 }
 
+i {
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  
+}
+
+.bookmark {
+  color: yellow;
+}
 
 .flip-card {
   background-color: transparent;

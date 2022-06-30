@@ -22,12 +22,12 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/profile" style="color:black">Profile</router-link>
           </li>
-          <li v-if="this.loginState === 'Login'" class="nav-item" >
+          <!-- <li v-if="this.loginState === 'Login'" class="nav-item" >
             <router-link class="nav-link" to="/login" style="color:black">{{this.loginStates}}</router-link>
           </li>
           <li v-if="this.loginState === 'Logout'" class="nav-item">
             <router-link @click.native="logout" class="nav-link" to="#" style="color:black">{{this.loginState}}</router-link>
-          </li>
+          </li> -->
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
