@@ -42,9 +42,11 @@ export default {
     ...mapGetters(['allUsers', 'bookmarkings']),
     isBookmarked() {
       const bookmarkedUser = this.bookmarkings.bookmarking
-      for (const userId of bookmarkedUser) {
-        if (userId === this.eachUser.id) {
-          return true
+      if (bookmarkedUser) {
+        for (const userId of bookmarkedUser) {
+          if (userId === this.eachUser.id) {
+            return true
+          }
         }
       }
       return false

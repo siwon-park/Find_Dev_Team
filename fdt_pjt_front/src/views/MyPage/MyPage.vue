@@ -35,12 +35,16 @@
           GitHub : {{ this.currentUser.github_url }}<br>
           포트폴리오 url : {{ this.currentUser.portfolio_url }}<br>
           약점 : {{ this.currentUser.strength }}<br>
-          팀 : {{ this.currentUser.my_team.name }}
+          팀 : <span v-if="this.currentUser.my_team !== null">{{ this.currentUser.my_team.name }}</span>
+            <span v-if="this.currentUser.my_team === null">팀이 없습니다</span>
         </div>
         <div class="d-flex">
           <button>
             <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
             <div @click="openModal()" class="update">프로필 수정</div>
+          </button>
+          <button>
+            <div @click="openModal2()" class="update">비밀번호 변경</div>
           </button>
           <button>
             <div class="update">탈퇴하기</div>
@@ -49,6 +53,7 @@
       </div>
     </div>
     <MyPageEdit v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></MyPageEdit>
+    <PasswordChange v-if="modalToggle2" :modalToggle="modalToggle2" @modal-close-btn2="closeModal2()"></PasswordChange>
   </div>
     
 </template>
@@ -56,16 +61,19 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
+import PasswordChange from '@/components/MyPage/PasswordChange.vue'
 import router from '@/router'
 
 export default {
   name: 'MyPage',
   components: {
     MyPageEdit,
+    PasswordChange,
   },
   data() {
     return {
       modalToggle: false,
+      modalToggle2: false,
     }
   },
   computed: {
@@ -73,15 +81,25 @@ export default {
   },
   methods: {
     ...mapActions(['fetchCurrentUser',]),
+    // 프로필 수정 모달 open
     openModal(){
       this.modalToggle = !this.modalToggle
     },
+    // 비밀번호 변경 모달 open
+    openModal2(){
+      this.modalToggle2 = !this.modalToggle2
+    },
+    // 프로필 수정 모달 close
     closeModal(data) {
       this.modalToggle = data
     },
+    // 비밀번호 수정 모달 close
+    closeModal2(data) {
+      this.modalToggle2 = data
+    },
     goBack() {
-        router.push({ name: 'main' })
-      }
+      router.push({ name: 'main' })
+    }
   },
   created() {
     this.fetchCurrentUser()
