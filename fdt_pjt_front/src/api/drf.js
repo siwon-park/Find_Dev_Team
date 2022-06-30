@@ -18,6 +18,8 @@ export default {
     signout: () => HOST + 'accounts/signout/',
     // 나의 사용자 조회/수정
     mypage: () => HOST + 'account/user/',
+    // 비밀번호 변경
+    changepassword: () => HOST + 'account/' + 'password/change/',
     // 다른 사용자 조회
     profile: userId => HOST + ACCOUNTS + `${userId}/`,
     // 북마크 조회/등록/해제
