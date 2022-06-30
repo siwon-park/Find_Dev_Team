@@ -41,27 +41,69 @@
         <div class="my-1">
           <span>지역: </span>
           <label for="region"></label>
-          <input v-model="signup_credentials.region" type="text" id="region" placeholder="region" required />
+          <select v-model="signup_credentials.region" class="form-select" style="width:200px">
+            <option value="서울">서울</option>
+            <option value="대전">대전</option>
+            <option value="광주">광주</option>
+            <option value="부울경">부울경</option>
+            <option value="구미">구미</option>
+          </select>
+          <!-- <input v-model="signup_credentials.region" type="text" id="region" placeholder="region" required /> -->
         </div>
         <div class="my-1">
           <span>성별: </span>
           <label for="sex"></label>
-          <input v-model="signup_credentials.sex" type="text" id="sex" placeholder="sex" required />
+          <select v-model="signup_credentials.sex" class="form-select" style="width:200px">
+            <option value="남">남</option>
+            <option value="여">여</option>
+          </select>
+          <!-- <input v-model="signup_credentials.sex" type="text" id="sex" placeholder="sex" required /> -->
         </div>
         <div class="my-1">
           <span>포지션: </span>
           <label for="position"></label>
-          <input v-model="signup_credentials.position" type="text" id="position" placeholder="position" required />
+          <select v-model="signup_credentials.position" class="form-select" style="width:200px">
+            <option value="백엔드">백엔드</option>
+            <option value="프론트엔드">프론트엔드</option>
+          </select>
+          <!-- <input v-model="signup_credentials.position" type="text" id="position" placeholder="position" required /> -->
         </div>
         <div class="my-1">
           <span>전공: </span>
           <label for="major"></label>
-          <input v-model="signup_credentials.major" type="text" id="major" placeholder="major" required />
+          <select v-model="signup_credentials.major" class="form-select" style="width:200px">
+            <option value="전공">전공</option>
+            <option value="비전공">비전공</option>
+          </select>
+          <!-- <input v-model="signup_credentials.major" type="text" id="major" placeholder="major" required /> -->
         </div>
         <div class="my-1">
           <span>반: </span>
           <label for="group"></label>
-          <input v-model="signup_credentials.group" type="text" id="group" placeholder="group" required />
+          <select v-model="signup_credentials.group" class="form-select" style="width:200px">
+            <option value="1">1반</option>
+            <option value="2">2반</option>
+            <option value="3">3반</option>
+            <option value="4">4반</option>
+            <option value="5">5반</option>
+            <option value="6">6반</option>
+            <option value="7">7반</option>
+            <option value="8">8반</option>
+            <option value="9">9반</option>
+            <option value="10">10반</option>
+            <option value="11">11반</option>
+            <option value="12">12반</option>
+            <option value="13">13반</option>
+            <option value="14">14반</option>
+            <option value="15">15반</option>
+            <option value="16">16반</option>
+            <option value="17">17반</option>
+            <option value="18">18반</option>
+            <option value="19">19반</option>
+            <option value="20">20반</option>
+            <option value="21">21반</option>
+          </select>
+          <!-- <input v-model="signup_credentials.group" type="text" id="group" placeholder="group" required /> -->
         </div>
         <div class="my-3">
           <button class="btn">제출</button>

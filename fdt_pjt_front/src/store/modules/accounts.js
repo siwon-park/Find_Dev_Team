@@ -223,6 +223,25 @@ export default {
     },
 
     // 비밀번호 변경
-    
+    changePassword({ commit, getters }, { password1, password2 }) {
+      const passwordData = {
+        new_password1: password1,
+        new_password2: password2,
+      }
+      if (getters.isLoggedIn) {
+        axios({
+          url: drf.accounts.changepassword(),
+          method: 'post',
+          data: passwordData,
+          headers: getters.authHeader,
+        })
+        .then(res => {
+          commit('SET_CURRENT_USER', res.data)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+      }
+    },
   }
 }
