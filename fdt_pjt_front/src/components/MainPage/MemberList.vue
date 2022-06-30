@@ -2,7 +2,7 @@
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <img src="@/assets/logo.png" alt="Avatar" style="width:300px;height:300px;">
+      <img src="@/assets/WMT_logo.png" alt="Avatar" style="width:300px;height:300px;">
     </div>
     <div class="flip-card-back">
       <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
@@ -42,9 +42,11 @@ export default {
     ...mapGetters(['allUsers', 'bookmarkings']),
     isBookmarked() {
       const bookmarkedUser = this.bookmarkings.bookmarking
-      for (const userId of bookmarkedUser) {
-        if (userId === this.eachUser.id) {
-          return true
+      if (bookmarkedUser) {
+        for (const userId of bookmarkedUser) {
+          if (userId === this.eachUser.id) {
+            return true
+          }
         }
       }
       return false

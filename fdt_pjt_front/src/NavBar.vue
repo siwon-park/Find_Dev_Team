@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <!-- 이미지 연결 -->
       <router-link class="navbar-brand" to="/" style="margin-left: 15px; margin-right: 10px;padding-bottom: 15px;">
-        <img id="navbar-logo" alt="netflix_logo" width="60px" height="50px">
+        <img id="navbar-logo" src="@/assets/WMT_logo.png" alt="logo" width="100spx" height="70px">
       </router-link>
       <!--햄버거 버튼-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
