@@ -31,7 +31,14 @@
                   <label for="region">지역:</label>
                 </td>
                 <td>
-                  <input v-model="currentUser.nickname" type="text" id="nickname" required />
+                  <select v-model="currentUser.region" class="form-select" style="width:164px">
+                    <option value="서울">서울</option>
+                    <option value="대전">대전</option>
+                    <option value="광주">광주</option>
+                    <option value="부울경">부울경</option>
+                    <option value="구미">구미</option>
+                  </select>
+                  <!-- <input v-model="currentUser.region" type="text" id="region" required /> -->
                 </td>
               </tr>
               <tr>
@@ -39,15 +46,23 @@
                   <label for="sex">성별:</label>
                 </td>
                 <td>
-                  <input v-model="currentUser.sex" type="text" id="sex" required />
+                  <select v-model="currentUser.sex" class="form-select" style="width:164px">
+                    <option value="남">남</option>
+                    <option value="여">여</option>
+                  </select>
+                  <!-- <input v-model="currentUser.sex" type="text" id="sex" required /> -->
                 </td>
               </tr>
               <tr>
                 <td>
-                  <label for="position">포지션(Badk/Front):</label>
+                  <label for="position">포지션:</label>
                 </td>
                 <td>
-                  <input v-model="currentUser.position" type="text" id="position" required />
+                  <select v-model="currentUser.position" class="form-select" style="width:164px">
+                    <option value="백엔드">백엔드</option>
+                    <option value="프론트엔드">프론트엔드</option>
+                  </select>
+                  <!-- <input v-model="currentUser.position" type="text" id="position" required /> -->
                 </td>
               </tr>
               <tr>
@@ -55,7 +70,11 @@
                   <label for="major">전공 여부:</label>
                 </td>
                 <td>
-                  <input v-model="currentUser.major" type="text" id="major" required />
+                  <select v-model="currentUser.major" class="form-select" style="width:164px">
+                    <option value="전공">전공</option>
+                    <option value="비전공">비전공</option>
+                  </select>
+                  <!-- <input v-model="currentUser.major" type="text" id="major" required /> -->
                 </td>
               </tr>
               <tr>
@@ -63,7 +82,30 @@
                   <label for="group">반: </label>
                 </td>
                 <td>
-                  <input v-model="currentUser.group" type="text" id="group" required />
+                  <select v-model="currentUser.group" class="form-select" style="width:164px">
+                    <option value="1">1반</option>
+                    <option value="2">2반</option>
+                    <option value="3">3반</option>
+                    <option value="4">4반</option>
+                    <option value="5">5반</option>
+                    <option value="6">6반</option>
+                    <option value="7">7반</option>
+                    <option value="8">8반</option>
+                    <option value="9">9반</option>
+                    <option value="10">10반</option>
+                    <option value="11">11반</option>
+                    <option value="12">12반</option>
+                    <option value="13">13반</option>
+                    <option value="14">14반</option>
+                    <option value="15">15반</option>
+                    <option value="16">16반</option>
+                    <option value="17">17반</option>
+                    <option value="18">18반</option>
+                    <option value="19">19반</option>
+                    <option value="20">20반</option>
+                    <option value="21">21반</option>
+                  </select>
+                  <!-- <input v-model="currentUser.group" type="text" id="group" required /> -->
                 </td>
               </tr>
               <tr>

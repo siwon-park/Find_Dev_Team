@@ -37,7 +37,6 @@ const routes = [
     name: 'mypageedit',
     component: MyPageEdit
   },
-
   { // 개별 팀 조회
     path: '/teams/:teamId',
     name: 'team',

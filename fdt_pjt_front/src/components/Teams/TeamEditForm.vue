@@ -167,6 +167,7 @@ export default {
     modalCloseBtn() {
       this.$emit('modal-close-btn', false)
     },
+    
     modalCloseOutside() {
       const modal = document.querySelector('.my-modal') // my-modal에 대한 부분만 선택 됨
       window.onclick = function (event) {
@@ -175,6 +176,7 @@ export default {
         }
       }
     },
+
     onSubmit(){
       this.newTeam.team_member.push(...this.tempTeamMembers)
       const payload = {
@@ -214,8 +216,6 @@ export default {
       }
     }
   },
-
-    
 
   created() {
     this.fetchCurrentUser()
