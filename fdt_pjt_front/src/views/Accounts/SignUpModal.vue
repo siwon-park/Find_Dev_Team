@@ -150,6 +150,7 @@ export default {
           modal.style.display = "none";
         }
       }
+      this.$emit('modal-close-btn', false) // 밖을 눌러서 꺼도 부모에서 false값을 전달해줘야함
     }
   }
 }
