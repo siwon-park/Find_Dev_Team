@@ -42,6 +42,7 @@ export default {
     removeToken ({commit}) {
       commit('SET_TOKEN', '')
       localStorage.setItem('token', '')
+      // localStorage.removeItem('vuex')
     },
 
     // 로그인
@@ -92,7 +93,6 @@ export default {
       .then(() => {
         dispatch('removeToken')
         alert('성공적으로 로그아웃되었습니다.')
-        localStorage.removeItem('vuex')
         router.push({ name: 'main' })
       })
       .catch(err => {
@@ -194,10 +194,11 @@ export default {
     },
 
     // 북마크 조회
-    fetchBookmarkings({ commit }, userId) {
+    fetchBookmarkings({ commit, getters }, userId) {
       axios({
         url: drf.accounts.bookmark(userId),
         method: 'get',
+        headers: getters.authHeader,
       })
       .then(res => {
         commit('FETCH_BOOKMARKINGS', res.data)
