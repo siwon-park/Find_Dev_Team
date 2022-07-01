@@ -26,7 +26,7 @@ export default {
   },
   created() {
     // 매번 비동기 호출로 해결 안되면, allUser를 호출해서 userId가 일치하는 데이터를 넘기면 됨
-    this.fetchProfile(userId)
+    this.fetchProfile(this.userId)
   },
 }
 </script>
