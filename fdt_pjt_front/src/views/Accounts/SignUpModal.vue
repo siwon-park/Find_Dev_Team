@@ -148,9 +148,9 @@ export default {
       window.onclick = function (event) {
         if (event.target === modal) {
           modal.style.display = "none";
+          this.$emit('modal-close-btn', false) // 밖을 눌러서 꺼도 부모에서 false값을 전달해줘야함
         }
       }
-      this.$emit('modal-close-btn', false) // 밖을 눌러서 꺼도 부모에서 false값을 전달해줘야함
     }
   }
 }
@@ -161,7 +161,8 @@ export default {
     background-color: #fcf3e1;
     /* border: 2px solid black; */
     border-radius: 20px;
-    box-shadow: 10px 10px; 
+    box-shadow: 10px 10px;
+    margin-top: 100px; 
   }
 
   .my-modal {

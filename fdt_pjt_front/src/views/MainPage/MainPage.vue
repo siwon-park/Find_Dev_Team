@@ -21,7 +21,7 @@
           v-for="eachUser in allUsers" 
           :key="eachUser.id" 
           :eachUser="eachUser"
-          class="mx-3"></MemberList>
+          class="mx-4"></MemberList>
         </div>
       </Flicking>
     </div>
