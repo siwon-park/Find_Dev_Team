@@ -40,6 +40,9 @@
         </div>
         <div class="d-flex">
           <button>
+            <router-link to="/mypage/bookmarkings">북마크 모아보기</router-link>
+          </button>
+          <button>
             <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
             <div @click="openModal()" class="update">프로필 수정</div>
           </button>

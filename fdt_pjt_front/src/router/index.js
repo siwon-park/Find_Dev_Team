@@ -8,6 +8,7 @@ import MyPage from '@/views/MyPage/MyPage.vue'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
 import TeamEditView from '@/views/Teams/TeamEditView.vue'
 import TeamNewView from '@/views/Teams/TeamNewView.vue'
+import MyBookmarks from '@/views/MyPage/MyBookmarks.vue'
 
 Vue.use(VueRouter)
 
@@ -42,7 +43,11 @@ const routes = [
     name: 'team',
     component: MyTeamPageView
   },
-
+  { // 북마크 모아보기
+    path: '/mypage/bookmarkings',
+    name: 'mybookmarkings',
+    component: MyBookmarks,
+  },
   { // 팀 수정
     path: '/teams/:teamId/edit',
     name: 'teamEdit',
