@@ -40,7 +40,7 @@
         </div>
         <div class="d-flex">
           <button>
-            <router-link to="/mypage/bookmarkings">북마크 모아보기</router-link>
+            <router-link to="/mypage/bookmarkings" class="text-decoration-none" style="color:black">북마크 모아보기</router-link>
           </button>
           <button>
             <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
