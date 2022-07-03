@@ -95,7 +95,7 @@ export default {
     goBack() {
       router.push({ name: 'main' })
     },
-    
+
     signOut() {
       this.signout()
     }

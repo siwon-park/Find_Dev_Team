@@ -7,6 +7,7 @@ import SignUpModal from '@/views/Accounts/SignUpModal.vue'
 import MyPage from '@/views/MyPage/MyPage.vue'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
 import MyBookmarks from '@/views/MyPage/MyBookmarks.vue'
+import TeamCreateForm from '@/components/Teams/TeamCreateForm'
 
 Vue.use(VueRouter)
 
@@ -46,6 +47,12 @@ const routes = [
     name: 'mybookmarkings',
     component: MyBookmarks,
   },
+  { // 팀 생성
+    path: '/team/new',
+    name: 'teamcreate',
+    component: TeamCreateForm,
+  },
+  
 ]
 
 const router = new VueRouter({

@@ -70,14 +70,14 @@
                   <input type="text" v-model="newTeam.kakao_chat" placeholder="kakao_chat" id="kakao_chat">
                 </td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td>
                   <label for="img">프로필 이미지: </label>
                 </td>
                 <td>
                   <input v-model="currentUser.img" type="text" id="img" required />
                 </td>
-              </tr>
+              </tr> -->
               <tr>
                 <td>
                   <label for="member">팀 멤버</label>

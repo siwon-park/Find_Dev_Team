@@ -52,17 +52,13 @@ import router from '@/router'
 
 export default {
   name: 'TeamForm',
-  props:{
-    team: Object,
-    action: String,
-  },
   data(){
     return {
       newTeam:{
-        name: this.team.name,
-        intro: this.team.intro,
-        leader: this.team.leader,
-        team_member: this.team.team_member,
+        name: '',
+        intro: '',
+        leader: '',
+        team_member: '',
       }
 
     }
