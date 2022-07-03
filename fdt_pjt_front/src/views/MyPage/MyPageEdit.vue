@@ -140,22 +140,22 @@
                   <input v-model="currentUser.github_url" type="text" id="github_url" required />
                 </td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td>
                   <label for="portfolio_url">portfolio_url:</label>
                 </td>
                 <td>
                   <input v-model="currentUser.portfolio_url" type="text" id="portfolio_url" required />
                 </td>
-              </tr>
-              <tr>
+              </tr> -->
+              <!-- <tr>
                 <td>
                   <label for="strength">약점:</label>
                 </td>
                 <td>
                   <input v-model="currentUser.strength" type="text" id="strength" required />
                 </td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
           <div class="my-3">
@@ -233,7 +233,7 @@ export default {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.6); /* 부모에게만 투명을 지정함 */
-    padding-top: 50px;
+    padding-top: 100px;
   }
 
   .container {

@@ -14,6 +14,7 @@
             <td>
               {{ this.eachTeamData.name }}
             </td>
+            <hr>
           </tr>
           <tr>
             <td>
@@ -106,8 +107,9 @@ export default {
 <style scoped>
   .container {
     background-color: #e1f6fc;
-    width: 40%;
-    border: 10px solid #120c65
+    width: 800px;
+    border: 10px solid #120c65;
+    border-radius: 20px;
   }
 
   .my-modal {
@@ -117,7 +119,7 @@ export default {
     top: 0;
     width: 100%;
     overflow: auto;
-    padding-top: 30px;
+    /* padding-top: 0px; */
   }
 
   span {

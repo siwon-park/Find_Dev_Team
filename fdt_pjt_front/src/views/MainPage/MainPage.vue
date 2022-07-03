@@ -12,8 +12,7 @@
           </div>
         </Flicking>
       </div>
-      <hr>
-      <hr>
+      <br><br><br>
       <Flicking :options="{ circular: true }">
         <div class="d-flex justify-content-center">
           <MemberList 
