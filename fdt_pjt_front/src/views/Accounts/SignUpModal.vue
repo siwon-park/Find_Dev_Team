@@ -161,7 +161,8 @@ export default {
     background-color: #fcf3e1;
     /* border: 2px solid black; */
     border-radius: 20px;
-    box-shadow: 10px 10px; 
+    box-shadow: 10px 10px;
+    margin-top: 100px; 
   }
 
   .my-modal {

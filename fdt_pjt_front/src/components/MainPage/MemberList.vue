@@ -2,8 +2,12 @@
 <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <img src="@/assets/WMT_logo.png" alt="Avatar" style="width:300px;height:300px;">
+      <div class="box">
+        <img src="@/assets/member.png" alt="Avatar" style="width:300px;height:300px;">
+        <div class="text">{{ this.eachUser.nickname }}({{ this.eachUser.position }})</div>
+      </div>
     </div>
+
     <div class="flip-card-back">
       <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
         <div class="each-content">
@@ -20,6 +24,15 @@
         </div>
         <div class="each-content">
           지역: {{this.eachUser.region}}
+        </div>
+        <div class="each-content">
+          <a :href="this.eachUser.kakao_chat"> 카카오 오픈챗</a>
+        </div>
+        <div class="each-content">
+          깃허브 : {{this.eachUser.github_url}}
+        </div>
+        <div class="each-content">
+          소개 : {{this.eachUser.intro}}
         </div>
       </div>
     </div>
@@ -66,18 +79,33 @@ export default {
 
 <style scoped>
 
+.box {
+   position: relative;
+}
+
+.text {
+   position: absolute;
+   top: 50px;
+   left: 100px;
+   width: 100%;
+   font-weight: bolder;
+}
+
 .inner-content {
   height: 100%;
+  background-color: #fce2d1;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  font-weight: bolder;
+  text-align: center;
+  box-shadow: inset -2px -2px 6px 0 rgba(255, 255, 255, 0.2),
+    inset 2px 2px 6px 0 rgba(97, 97, 97, 0.8);
+  
 }
 
 .each-content {
-  border: 1px solid #f1f1f1;
-  border-radius: 10px;
-  background-color: white;
-  margin: 1px;
-  height: 40px;
-  font-size: 18px;
-  line-height: 40px;
+  font-size: 16px;
 }
 
 i {
@@ -92,7 +120,6 @@ i {
   background-color: transparent;
   width: 300px;
   height: 350px;
-  /* border: 1px solid #f1f1f1; */
   perspective: 1000px;
   border-radius: 20px;
 }

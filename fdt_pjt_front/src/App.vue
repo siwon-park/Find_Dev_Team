@@ -8,17 +8,20 @@
     <router-link @click.native="logout()" to='/login' v-if="isLoggedIn">Logout</router-link><br>
     <router-link :to="{ name: 'mypage' }">마이페이지</router-link><br>
     <router-view></router-view>
+    <foot-bar></foot-bar>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import NavBar from './NavBar.vue';
+import FootBar from './FootBar.vue';
 
 export default {
   name: 'App',
   components: {
     NavBar,
+    FootBar
   },
   data() {
     return {
@@ -44,8 +47,6 @@ export default {
    }
 
   body {
-    /* background: linear-gradient(0deg, #B1D8F9, #D7CFF6, #FEEDD8); */
-    /* background: radial-gradient(#B1D8F9, #D7CFF6, #FEEDD8); */
     background:
     linear-gradient(217deg, #B1D8F9, rgba(255,0,0,0) 70.71%),
     linear-gradient(127deg, #D7CFF6, rgba(0,255,0,0) 70.71%),

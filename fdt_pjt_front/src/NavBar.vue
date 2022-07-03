@@ -29,10 +29,10 @@
             <router-link @click.native="logout" class="nav-link" to="#" style="color:black">{{this.loginState}}</router-link>
           </li> -->
         </ul>
-        <form class="d-flex" role="search">
+        <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-secondary " type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </nav>
@@ -56,16 +56,14 @@ export default {
 </script>
 
 <style scoped>
-
  .nav-link{
+   /* font-family: 'Gowun Dodum', serif; */
    text-align: center;
    min-width: 150px;
    padding: 10px 10px;
    margin: 15px;
-   background: #ffffffe0;
    border: none;
    border-radius: 25px;
-   color: rgb(81, 158, 214);
    text-transform: uppercase;
    letter-spacing: 2px;
    cursor: pointer;
