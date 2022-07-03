@@ -42,12 +42,12 @@
           <button>
             <router-link to="/mypage/bookmarkings" class="text-decoration-none" style="color:black">북마크 모아보기</router-link>
           </button>
-          <button>
+          <button @click="openModal()" >
             <!-- <router-link class="update" to="/mypage/edit">프로필 수정</router-link> -->
-            <div @click="openModal()" class="update">프로필 수정</div>
+            <div class="update">프로필 수정</div>
           </button>
-          <button>
-            <div @click="openModal2()" class="update">비밀번호 변경</div>
+          <button @click="openModal2()">
+            <div class="update">비밀번호 변경</div>
           </button>
           <button>
             <div class="update">탈퇴하기</div>
@@ -86,19 +86,21 @@ export default {
     ...mapActions(['fetchCurrentUser',]),
     // 프로필 수정 모달 open
     openModal(){
+      // console.log(this.modalToggle)
       this.modalToggle = !this.modalToggle
+      // console.log(this.modalToggle)
     },
     // 비밀번호 변경 모달 open
     openModal2(){
       this.modalToggle2 = !this.modalToggle2
     },
     // 프로필 수정 모달 close
-    closeModal(data) {
-      this.modalToggle = data
+    closeModal() {
+      this.modalToggle = false
     },
     // 비밀번호 수정 모달 close
-    closeModal2(data) {
-      this.modalToggle2 = data
+    closeModal2() {
+      this.modalToggle2 = false
     },
     goBack() {
       router.push({ name: 'main' })
