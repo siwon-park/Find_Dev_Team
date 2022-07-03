@@ -56,6 +56,7 @@ export default {
         const token = res.data.key
         dispatch('saveToken', token)
         dispatch('fetchCurrentUser')
+        commit('SET_AUTH_ERROR', null) // 로그인 성공 시 getters의 authError를 날림
         router.push({ name: 'main'})
       })
       .catch(err => {
@@ -75,6 +76,7 @@ export default {
         const token = res.data.key
         dispatch('saveToken', token)
         dispatch('fetchCurrentUser')
+        commit('SET_AUTH_ERROR', null) // 회원가입 성공 시 getters의 authError를 날림
         router.push({ name: 'main' })
       })
       .catch(err => {
