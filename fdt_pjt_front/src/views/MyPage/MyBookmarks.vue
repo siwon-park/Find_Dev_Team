@@ -1,9 +1,10 @@
 <template>
   <div>
     <div v-if="this.bookmarkings.bookmarking">
+      나의 북마크 모아보기
       <BookmarkingList v-for="userId in this.bookmarkings.bookmarking" :key="userId" :userId="userId"></BookmarkingList>
     </div>
-    <div v-else>
+    <div v-if="this.bookmarkings.bookmarking.length === 0">
       {{this.currentUser.username}}님은 현재 북마킹 중인 유저가 없습니다.
     </div>
   </div>

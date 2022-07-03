@@ -1,6 +1,5 @@
 <template>
   <div>
-    나의 북마크 모아보기
     {{this.userId}}
     {{this.profile}}
   </div>

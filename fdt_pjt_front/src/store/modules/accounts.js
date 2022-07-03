@@ -156,7 +156,6 @@ export default {
         })
         .then(res => {
           commit('SET_CURRENT_USER', res.data)
-          router.push({ name: 'mypage' })
         })
         .catch(err => {
           console.error(err.response.data)
