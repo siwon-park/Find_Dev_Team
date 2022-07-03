@@ -81,11 +81,10 @@ export default {
       'fetchTeam',
     ]),
     openModal(){
-      console.log(this.modalToggle)
       this.modalToggle = !this.modalToggle
     },
-    closeModal(data) {
-      this.modalToggle = data
+    closeModal() {
+      this.modalToggle = false
     },
     goBack() {
         router.push({ name: 'main' })

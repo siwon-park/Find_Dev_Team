@@ -43,7 +43,7 @@
           <button @click="openModal2()">
             <div class="update">비밀번호 변경</div>
           </button>
-          <button>
+          <button @click="signOut()">
             <div class="update">탈퇴하기</div>
           </button>
         </div>
@@ -52,7 +52,6 @@
     <MyPageEdit v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></MyPageEdit>
     <PasswordChange v-if="modalToggle2" :modalToggle="modalToggle2" @modal-close-btn2="closeModal2()"></PasswordChange>
   </div>
-    
 </template>
 
 <script>
@@ -77,12 +76,10 @@ export default {
     ...mapGetters(['currentUser',])
   },
   methods: {
-    ...mapActions(['fetchCurrentUser',]),
+    ...mapActions(['fetchCurrentUser', 'signout']),
     // 프로필 수정 모달 open
     openModal(){
-      // console.log(this.modalToggle)
       this.modalToggle = !this.modalToggle
-      // console.log(this.modalToggle)
     },
     // 비밀번호 변경 모달 open
     openModal2(){
@@ -96,8 +93,13 @@ export default {
     closeModal2() {
       this.modalToggle2 = false
     },
+
     goBack() {
       router.push({ name: 'main' })
+    },
+    
+    signOut() {
+      this.signout()
     }
   },
   created() {

@@ -46,8 +46,8 @@ export default {
       const body = document.querySelector('body')
       body.style.backgroundColor = "rgba(0, 0, 0, 0.6)"
     },
-    closeModal(data) {
-      this.modalToggle = data
+    closeModal() {
+      this.modalToggle = false
       const body = document.querySelector('body')
       body.style.backgroundColor = "rgba(255, 255, 255)"
     },

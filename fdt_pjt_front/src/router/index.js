@@ -6,8 +6,6 @@ import MyTeamPageView from '@/views/Teams/MyTeamPageView.vue'
 import SignUpModal from '@/views/Accounts/SignUpModal.vue'
 import MyPage from '@/views/MyPage/MyPage.vue'
 import MyPageEdit from '@/views/MyPage/MyPageEdit.vue'
-import TeamEditView from '@/views/Teams/TeamEditView.vue'
-import TeamNewView from '@/views/Teams/TeamNewView.vue'
 import MyBookmarks from '@/views/MyPage/MyBookmarks.vue'
 
 Vue.use(VueRouter)
@@ -48,18 +46,6 @@ const routes = [
     name: 'mybookmarkings',
     component: MyBookmarks,
   },
-  { // 팀 수정
-    path: '/teams/:teamId/edit',
-    name: 'teamEdit',
-    component: TeamEditView
-  },
-
-  { // 팀 생성
-    path: '/new',
-    name: 'teamNew',
-    component: TeamNewView
-  },
-
 ]
 
 const router = new VueRouter({
