@@ -91,9 +91,10 @@ export default {
 
 .btn {
   background-color: #DFFF80;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   box-shadow: 3px 3px;
   transition: transform 200ms, box-shadow 200ms;
+  margin-top: 10px;
 }
 
 .btn:active {
@@ -103,7 +104,7 @@ export default {
 #username, #password {
   background-color: white;
   border-radius: 5px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 a {
@@ -124,7 +125,7 @@ a {
     color: black;
     text-align: center;
     font-weight: bolder;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     font-size: 14px;
     margin-right: 10px;
     line-height: 15px;

@@ -1,38 +1,43 @@
 <template>
-<div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
-      <div class="box">
-        <img src="@/assets/member.png" alt="Avatar" style="width:300px;height:300px;">
-        <div class="text">{{ this.eachUser.nickname }}({{ this.eachUser.position }})</div>
-      </div>
-    </div>
+<div>
 
-    <div class="flip-card-back">
-      <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
-        <div class="each-content">
-          닉네임: {{this.eachUser.nickname}} <a role="button" @click="followUser()"><i class="fa-solid fa-star" v-bind:class="{ bookmark: isBookmarked }"></i></a>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <div class="box">
+          <img src="@/assets/member.png" alt="Avatar" style="width:300px;height:300px;">
+          <div class="text">{{ this.eachUser.nickname }}({{ this.eachUser.position }})</div>
         </div>
-        <div class="each-content">
-          포지션: {{this.eachUser.position}}
-        </div>
-        <div class="each-content">
-          전공여부: {{this.eachUser.major}}
-        </div>
-        <div class="each-content">
-          성별: {{this.eachUser.sex}}
-        </div>
-        <div class="each-content">
-          지역: {{this.eachUser.region}}
-        </div>
-        <div class="each-content">
-          <a :href="this.eachUser.kakao_chat"> 카카오 오픈챗</a>
-        </div>
-        <div class="each-content">
-          깃허브 : {{this.eachUser.github_url}}
-        </div>
-        <div class="each-content">
-          소개 : {{this.eachUser.intro}}
+      </div>
+
+      <div class="flip-card-back">
+        <div class="inner-content py-3 px-3 d-flex flex-column justify-content-evenly">
+          <div class="container">
+            <div class="each-content">
+              닉네임: {{this.eachUser.nickname}} <a role="button" @click="followUser()"><i class="fa-solid fa-star" v-bind:class="{ bookmark: isBookmarked }"></i></a>
+            </div>
+            <div class="each-content">
+              포지션: {{this.eachUser.position}}
+            </div>
+            <div class="each-content">
+              전공여부: {{this.eachUser.major}}
+            </div>
+            <div class="each-content">
+              성별: {{this.eachUser.sex}}
+            </div>
+            <div class="each-content">
+              지역: {{this.eachUser.region}}
+            </div>
+            <div class="each-content">
+              <a :href="this.eachUser.kakao_chat"> 카카오 오픈챗</a>
+            </div>
+            <div class="each-content">
+              <a :href="this.eachUser.github_url">GitHub</a>
+            </div>
+            <div class="each-content">
+              소개 : {{this.eachUser.intro}}
+            </div>
+          </div>
         </div>
       </div>
     </div>

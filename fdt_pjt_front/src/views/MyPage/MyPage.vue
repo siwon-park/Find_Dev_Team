@@ -17,26 +17,20 @@
         </div>
         <div class="first d-flex">
           <div>
-            {{ this.currentUser.img }}
-          </div>
-          <div>
             이름 : {{ this.currentUser.username }}<br>
             성별 : {{ this.currentUser.sex }}<br>
             지역 : {{ this.currentUser.region }}<br>
             반 : {{ this.currentUser.group }}<br>
             포지션(B/F) : {{ this.currentUser.position }}<br>
             전공 : {{ this.currentUser.major }}
+            소개 : {{ this.currentUser.intro }}<br>
+            오픈 카카오 : {{ this.currentUser.kakao_chat }}<br>
+            GitHub : {{ this.currentUser.github_url }}<br>
+            포트폴리오 url : {{ this.currentUser.portfolio_url }}<br>
+            약점 : {{ this.currentUser.strength }}<br>
+            팀 : <span v-if="this.currentUser.my_team !== null">{{ this.currentUser.my_team.name }}</span>
+              <span v-if="this.currentUser.my_team === null">팀이 없습니다</span>
           </div>
-        </div>
-        <!-- 부가 정보 -->
-        <div>
-          소개 : {{ this.currentUser.intro }}<br>
-          오픈 카카오 : {{ this.currentUser.kakao_chat }}<br>
-          GitHub : {{ this.currentUser.github_url }}<br>
-          포트폴리오 url : {{ this.currentUser.portfolio_url }}<br>
-          약점 : {{ this.currentUser.strength }}<br>
-          팀 : <span v-if="this.currentUser.my_team !== null">{{ this.currentUser.my_team.name }}</span>
-            <span v-if="this.currentUser.my_team === null">팀이 없습니다</span>
         </div>
         <div class="d-flex">
           <button>

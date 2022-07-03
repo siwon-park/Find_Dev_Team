@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>메인페이지</h1>
     <div>
       <div class="container-fluid">
         <Flicking :options="{ circular: true }">
@@ -21,7 +20,7 @@
           v-for="eachUser in allUsers" 
           :key="eachUser.id" 
           :eachUser="eachUser"
-          class="mx-4"></MemberList>
+          class="mx-3"></MemberList>
         </div>
       </Flicking>
     </div>

@@ -12,99 +12,125 @@
         </div>
         <div class="d-flex align-items-center">
           <div class="rectangle mx-1" @click="modalCloseBtn()">X</div>
-          <div class="arrow mx-1">◀</div>
+          <div class="arrow mx-1" @click="modalCloseBtn()">◀</div>
         </div>
       </div>
     </div>
     <div class="row">
       <form @submit.prevent="signup(signup_credentials)">
-        <div class="my-1">
-          <span>유저이름: </span>
-          <label for="username"></label>
-          <input v-model="signup_credentials.username" type="text" id="username" placeholder="username" required/>
-        </div>
-        <div class="my-1">
-          <span>비밀번호: </span>
-          <label for="password1"></label>
-          <input v-model="signup_credentials.password1" type="password" id="password1" placeholder="password1" required />
-        </div>
-        <div class="my-1">
-          <span>비밀번호 확인: </span>
-          <label for="password2"></label>
-          <input v-model="signup_credentials.password2" type="password" id="password2" placeholder="password2" required />
-        </div>
-        <div class="my-1">
-          <span>닉네임: </span>
-          <label for="nickname"></label>
-          <input v-model="signup_credentials.nickname" type="text" id="nickname" placeholder="nickname" required />
-        </div>
-        <div class="my-1">
-          <span>지역: </span>
-          <label for="region"></label>
-          <select v-model="signup_credentials.region" class="form-select" style="width:200px">
-            <option value="서울">서울</option>
-            <option value="대전">대전</option>
-            <option value="광주">광주</option>
-            <option value="부울경">부울경</option>
-            <option value="구미">구미</option>
-          </select>
-          <!-- <input v-model="signup_credentials.region" type="text" id="region" placeholder="region" required /> -->
-        </div>
-        <div class="my-1">
-          <span>성별: </span>
-          <label for="sex"></label>
-          <select v-model="signup_credentials.sex" class="form-select" style="width:200px">
-            <option value="남">남</option>
-            <option value="여">여</option>
-          </select>
-          <!-- <input v-model="signup_credentials.sex" type="text" id="sex" placeholder="sex" required /> -->
-        </div>
-        <div class="my-1">
-          <span>포지션: </span>
-          <label for="position"></label>
-          <select v-model="signup_credentials.position" class="form-select" style="width:200px">
-            <option value="백엔드">백엔드</option>
-            <option value="프론트엔드">프론트엔드</option>
-          </select>
-          <!-- <input v-model="signup_credentials.position" type="text" id="position" placeholder="position" required /> -->
-        </div>
-        <div class="my-1">
-          <span>전공: </span>
-          <label for="major"></label>
-          <select v-model="signup_credentials.major" class="form-select" style="width:200px">
-            <option value="전공">전공</option>
-            <option value="비전공">비전공</option>
-          </select>
-          <!-- <input v-model="signup_credentials.major" type="text" id="major" placeholder="major" required /> -->
-        </div>
-        <div class="my-1">
-          <span>반: </span>
-          <label for="group"></label>
-          <select v-model="signup_credentials.group" class="form-select" style="width:200px">
-            <option value="1">1반</option>
-            <option value="2">2반</option>
-            <option value="3">3반</option>
-            <option value="4">4반</option>
-            <option value="5">5반</option>
-            <option value="6">6반</option>
-            <option value="7">7반</option>
-            <option value="8">8반</option>
-            <option value="9">9반</option>
-            <option value="10">10반</option>
-            <option value="11">11반</option>
-            <option value="12">12반</option>
-            <option value="13">13반</option>
-            <option value="14">14반</option>
-            <option value="15">15반</option>
-            <option value="16">16반</option>
-            <option value="17">17반</option>
-            <option value="18">18반</option>
-            <option value="19">19반</option>
-            <option value="20">20반</option>
-            <option value="21">21반</option>
-          </select>
-          <!-- <input v-model="signup_credentials.group" type="text" id="group" placeholder="group" required /> -->
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <label for="username">유저 네임</label>
+              </td>
+              <td>
+                <input v-model="signup_credentials.username" type="text" id="username" placeholder="username" required/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="password1">비밀번호</label>
+              </td>
+              <td>
+                <input v-model="signup_credentials.password1" type="password" id="password1" placeholder="password1" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="password2">비밀번호 확인</label>
+              </td>
+              <td>
+                <input v-model="signup_credentials.password2" type="password" id="password2" placeholder="password2" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="nickname">닉네임:</label>
+              </td>
+              <td>
+                <input v-model="signup_credentials.nickname" type="text" id="nickname" placeholder="nickname" required />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="region">지역</label>
+              </td>
+              <td>
+                <select v-model="signup_credentials.region" class="form-select" style="width:200px">
+                  <option value="서울">서울</option>
+                  <option value="대전">대전</option>
+                  <option value="광주">광주</option>
+                  <option value="부울경">부울경</option>
+                  <option value="구미">구미</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="sex">성별:</label>
+              </td>
+              <td>
+                <select v-model="signup_credentials.sex" class="form-select" style="width:200px">
+                  <option value="남">남</option>
+                  <option value="여">여</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="position">포지션:</label>
+              </td>
+              <td>
+                <select v-model="signup_credentials.position" class="form-select" style="width:200px">
+                  <option value="백엔드">백엔드</option>
+                  <option value="프론트엔드">프론트엔드</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="major">전공</label>
+              </td>
+              <td>
+                <select v-model="signup_credentials.major" class="form-select" style="width:200px">
+                  <option value="전공">전공</option>
+                  <option value="비전공">비전공</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="group">반</label>
+              </td>
+              <td>
+                <select v-model="signup_credentials.group" class="form-select" style="width:200px">
+                  <option value="1">1반</option>
+                  <option value="2">2반</option>
+                  <option value="3">3반</option>
+                  <option value="4">4반</option>
+                  <option value="5">5반</option>
+                  <option value="6">6반</option>
+                  <option value="7">7반</option>
+                  <option value="8">8반</option>
+                  <option value="9">9반</option>
+                  <option value="10">10반</option>
+                  <option value="11">11반</option>
+                  <option value="12">12반</option>
+                  <option value="13">13반</option>
+                  <option value="14">14반</option>
+                  <option value="15">15반</option>
+                  <option value="16">16반</option>
+                  <option value="17">17반</option>
+                  <option value="18">18반</option>
+                  <option value="19">19반</option>
+                  <option value="20">20반</option>
+                  <option value="21">21반</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <div class="my-3">
           <button class="btn">제출</button>
         </div>
@@ -163,6 +189,7 @@ export default {
     border-radius: 20px;
     box-shadow: 10px 10px;
     margin-top: 100px; 
+    width: 50%;
   }
 
   .my-modal {
@@ -182,12 +209,12 @@ export default {
   #username, #password1, #password2, #nickname, #region, #sex, #position, #major, #group {
     background-color: white;
     border-radius: 5px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
   }
 
   .btn {
     background-color: #DFFF80;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-shadow: 3px 3px;
     transition: transform 200ms, box-shadow 200ms;
   }
@@ -244,6 +271,7 @@ export default {
       line-height: 15px;
       box-shadow: black 2px 2px 0px;
       transition: transform 100ms, box-shadow 100ms;
+      cursor: pointer;
     }
 
     .arrow:active{
@@ -251,4 +279,7 @@ export default {
       box-shadow: black 0px 0px 0px;
     }
 
+  td {
+    padding: 5px;
+  }
 </style>
