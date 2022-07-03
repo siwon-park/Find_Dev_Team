@@ -42,6 +42,7 @@
         </li>
       </ul>
     </p> -->
+    <AccountErrorList v-if="authError !== null"></AccountErrorList>
     <SignUpModal v-if="modalToggle" :modalToggle="modalToggle" @modal-close-btn="closeModal()"></SignUpModal>
   </div>
 </template>
@@ -49,11 +50,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import SignUpModal from '@/views/Accounts/SignUpModal.vue'
+import AccountErrorList from '@/components/Accounts/AccountErrorList.vue'
 
 export default {
   name: 'LoginForm',
   components: {
     SignUpModal,
+    AccountErrorList,
   },
   data() {
     return {
@@ -72,8 +75,8 @@ export default {
     openModal(){
       this.modalToggle = !this.modalToggle
     },
-    closeModal(data) {
-      this.modalToggle = data
+    closeModal() {
+      this.modalToggle = false
     }
   }
 }

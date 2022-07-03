@@ -92,12 +92,12 @@ export default {
     },
     modalCloseOutside() {
       const modal = document.querySelector('.my-modal')
-      window.onclick = function (event) {
+      window.addEventListener('click', (event) => {
         if (event.target === modal) {
-          modal.style.display = "none";
+          modal.style.display = 'none'
+          this.$emit('modal-close-btn', false)
         }
-      }
-      this.$emit('modal-close', false)
+      })
     }
   },
 }

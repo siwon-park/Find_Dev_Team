@@ -170,11 +170,12 @@ export default {
     
     modalCloseOutside() {
       const modal = document.querySelector('.my-modal') // my-modal에 대한 부분만 선택 됨
-      window.onclick = function (event) {
+      window.addEventListener('click', (event) => {
         if (event.target === modal) {
-          modal.style.display = "none";
+          modal.style.display ='none'
+          this.$emit('modal-close-btn', false)
         }
-      }
+      })
     },
 
     onSubmit(){
