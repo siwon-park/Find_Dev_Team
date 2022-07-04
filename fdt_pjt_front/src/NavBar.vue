@@ -16,29 +16,29 @@
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="/" style="color:black">Home</router-link>
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/community" style="color:black">Community</router-link>
+          <li v-if="currentUser.my_team !== null && isLoggedIn" class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'team', params: { teamId: currentUser.my_team.id } }" style="color:black">My Team</router-link>
+          </li>
+          <li v-if="currentUser.my_team === null || !isLoggedIn" class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'teamcreate' }" style="color:black">Team Create</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/profile" style="color:black">Profile</router-link>
+            <router-link class="nav-link" to="/mypage" style="color:black">My Profile</router-link>
           </li>
-          <!-- <li v-if="this.loginState === 'Login'" class="nav-item" >
-            <router-link class="nav-link" to="/login" style="color:black">{{this.loginStates}}</router-link>
+          <li v-if="isLoggedIn" class="nav-item">
+            <router-link @click.native="logout()" to='/login' class="nav-link" style="color:black">Log out</router-link>
           </li>
-          <li v-if="this.loginState === 'Logout'" class="nav-item">
-            <router-link @click.native="logout" class="nav-link" to="#" style="color:black">{{this.loginState}}</router-link>
-          </li> -->
+          <li v-if="!isLoggedIn" class="nav-item">
+            <router-link class="nav-link" to="/login" style="color:black">Log in</router-link>
+          </li>
         </ul>
-        <!-- <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-secondary " type="submit">Search</button>
-        </form> -->
       </div>
     </div>
   </nav>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'NavBar',
   data() {
@@ -46,12 +46,11 @@ export default {
     }
   },
   methods: {
-   
+    ...mapActions(['logout',]),
   },
   computed: {
-    
+    ...mapGetters(['isLoggedIn', 'currentUser',]),
   },
-
 }
 </script>
 
