@@ -2,7 +2,7 @@
   <div>
     <div v-if="{userInfo} !== null">
       {{this.userId}}
-      {{this.profile}}
+      {{this.userInfo}}
     </div>
   </div>
 </template>
