@@ -20,7 +20,7 @@
             <tbody>
               <tr>
                 <td>
-                  <label for="name">팀 명:</label>
+                  <label for="name">팀 명</label>
                 </td>
                 <td>
                   <input v-model="newTeam.name" type="text" id="name" placeholder="name" >
@@ -244,6 +244,7 @@ export default {
   }
 
   .container {
+    margin-top: 100px;
     background-color: #fcf3e1;
     /* border: 2px solid black; */
     border-radius: 20px;

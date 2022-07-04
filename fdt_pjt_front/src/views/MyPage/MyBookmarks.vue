@@ -2,7 +2,11 @@
   <div>
     <div v-if="this.bookmarkings.bookmarking">
       나의 북마크 모아보기
-      <BookmarkingList v-for="userId in this.bookmarkings.bookmarking" :key="userId" :userId="userId"></BookmarkingList>
+      <Flicking :options="{ circular: true }">
+        <div class="d-flex justify-content-center">
+          <BookmarkingList v-for="userId in this.bookmarkings.bookmarking" :key="userId" :userId="userId"></BookmarkingList>
+        </div>
+      </Flicking>
     </div>
     <div v-if="this.bookmarkings.bookmarking.length === 0">
       {{this.currentUser.username}}님은 현재 북마킹 중인 유저가 없습니다.
@@ -13,10 +17,13 @@
 <script>
 import BookmarkingList from '@/components/MyPage/BookmarkingList.vue'
 import { mapActions, mapGetters } from 'vuex'
+import {Flicking} from "@egjs/vue-flicking"
+
 export default {
   name: 'MyBookmarks',
   components: {
     BookmarkingList,
+    Flicking,
   },
   data() {
     return {
@@ -34,6 +41,6 @@ export default {
 }
 </script>
 
-<style>
+<style >
 
 </style>

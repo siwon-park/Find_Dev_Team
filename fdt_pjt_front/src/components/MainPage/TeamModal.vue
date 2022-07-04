@@ -53,7 +53,7 @@
               <label for="kakao_chat">팀 오픈챗</label>
             </td>
             <td>
-              {{ this.eachTeamData.kakao_chat }}
+              <a :href="this.eachTeamData.kakao_chat"> 카카오 오픈챗</a>
             </td>
           </tr>
           <tr>

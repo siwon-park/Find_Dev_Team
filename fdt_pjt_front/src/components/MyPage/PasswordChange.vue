@@ -97,6 +97,7 @@ export default {
     border-radius: 20px;
     box-shadow: 10px 10px; 
     width: 40%;
+    margin-top: 100px; 
   }
 
   #password1, #password2 {

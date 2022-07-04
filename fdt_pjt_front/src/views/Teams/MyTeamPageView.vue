@@ -23,7 +23,7 @@
             흥미 : {{ team.common_interest }}<br>
             현재 인원 수 : {{ team.team_member.length }}<br>
             모집 인원 : {{ team.total_number }}<br>
-            카카오 오픈챗 : {{ team.kakao_chat }}<br>
+            <a :href="team.kakao_chat"> 카카오 오픈챗</a>
             팀 멤버 :
             <span>
               <span v-for="name in teamMemberName" :key="name">
