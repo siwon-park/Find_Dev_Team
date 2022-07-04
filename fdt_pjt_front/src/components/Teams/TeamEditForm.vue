@@ -106,8 +106,14 @@
                     <button style="margin-left:10px;">검색</button>
                   </section>
                   <div v-if="keyInput !== ''">
-                    <ul v-for="(ret, index) in keyword" :key="index">
-                      <li @click="addTeamMember(ret)">{{ ret.username }}</li>
+                    <ul v-for="(ret, index) in keyword" :key="index" class="list-group">
+                      <li 
+                      @click="addTeamMember(ret)"
+                      class="list-group-item d-flex justify-content-between align-items-center"
+                      >
+                      {{ ret.username }}
+                      <span class="badge bg-primary rounded-pill">X</span>
+                      </li>
                     </ul>
                   </div>
                 </td>
