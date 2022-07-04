@@ -88,14 +88,15 @@
                   </span>
                   <span v-for="tempTeamMemberName in this.tempTeamMembersForRender" :key="tempTeamMemberName">
                     <span class="mx-1">{{tempTeamMemberName}}</span>
+                    <span @click="removeMember(tempTeamMemberName)" class="badge bg-danger rounded-pill">X</span>
                   </span>
                 </td>
               </tr>
               <tr>
-                <td>
-                  <label>팀 멤버 검색</label>
-                </td>
-                <td>
+                <!-- <td>
+                  <label></label>
+                </td> -->
+                <td>팀 멤버 검색
                   <section id="searchbar-section">        
                     <input
                       type="text" 
@@ -108,11 +109,13 @@
                   <div v-if="keyInput !== ''">
                     <ul v-for="(ret, index) in keyword" :key="index" class="list-group">
                       <li 
-                      @click="addTeamMember(ret)"
                       class="list-group-item d-flex justify-content-between align-items-center"
+                      @click="addTeamMember(ret)"
                       >
-                      {{ ret.username }}
-                      <span class="badge bg-primary rounded-pill">X</span>
+                      <span>
+                        {{ ret.username }}
+                      </span>
+                      <span class="badge bg-success rounded-pill">+</span>
                       </li>
                     </ul>
                   </div>
@@ -194,9 +197,13 @@ export default {
         common_interest: this.newTeam.common_interest,
         ...this.newTeam,
       }
-      this.updateTeam(payload)
-      this.$emit('modal-close-btn', false)
-      alert("수정되었습니다.")
+      if (this.newTeam.team_member.length <= this.total_number) {
+        this.updateTeam(payload)
+        this.$emit('modal-close-btn', false)
+        alert("수정되었습니다.")
+      } else {
+        alert("팀원 제한을 초과했습니다")
+      }
     },
 
     inputChange(event) {
@@ -221,7 +228,14 @@ export default {
         this.tempTeamMembers.splice(idx, 1)
         this.tempTeamMembersForRender.splice(idx, 1)
       }
+    },
+
+    removeMember(memberName) {
+      const idx = this.tempTeamMembersForRender.indexOf(memberName)
+      this.tempTeamMembersForRender.splice(idx, 1)
+      this.tempTeamMembers.splice(idx, 1)
     }
+
   },
 
   created() {
