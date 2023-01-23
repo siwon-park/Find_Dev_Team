@@ -1,0 +1,6 @@
+token:
+    expiration_time: 86400000
+    secret: my_jwt_token
+
+gateway:
+    ip: 192.168.219.101
