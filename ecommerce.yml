@@ -1,6 +1,6 @@
 token:
     expiration_time: 86400000
-    secret: my_jwt_token
+    secret: token_from_ecommerce
 
 gateway:
     ip: 192.168.219.101
