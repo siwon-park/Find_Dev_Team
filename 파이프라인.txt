@@ -35,11 +35,22 @@ pipeline {
      }
    }
    
-   stage('Deploy') {
+   stage('Remove') {
      steps {
        script {
-         sh 'docker stop springboot && docker rm springboot'
-         sh 'docker run -d --name springboot -p 8080:8080'
+           try {
+                sh 'docker stop springboot && docker rm springboot'
+           } catch(e) {
+               echo 'fail to stop and remove container'
+           }
+       }
+     }
+   }
+   
+    stage('Deploy') {
+     steps {
+       script {
+            sh 'docker run -d --name springboot -p 8080:8080 springboot'
        }
      }
    }
