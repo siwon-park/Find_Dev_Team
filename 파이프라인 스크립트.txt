@@ -1,0 +1,66 @@
+pipeline {
+ agent any
+ 
+ environment {
+   GIT_URL = "https://8gi_coach@lab.ssafy.com/8gi_coach10/gitlab-deploy-test"
+ }
+ 
+ stages {
+   stage('Pull') {
+     steps {
+       script {
+         git url: "${GIT_URL}", branch: "master", credentialsId: "8gi_coach10", poll: true, changelog: true
+       }
+     }
+   }
+   
+   stage('SpringBoot Build') {
+     steps {
+       script {
+         dir('testapp') {
+             sh 'chmod +x gradlew'
+             sh './gradlew build'
+         }
+       }
+     }
+   }
+   
+   stage('Build') {
+     steps {
+       script {
+           dir('testapp'){
+               sh 'docker build -t springboot .'
+         }
+       }
+     }
+   }
+   
+   stage('Remove') {
+     steps {
+       script {
+           try {
+                sh 'docker stop springboot && docker rm springboot'
+           } catch(e) {
+               echo 'fail to stop and remove container'
+           }
+       }
+     }
+   }
+   
+    stage('Deploy') {
+     steps {
+       script {
+            sh 'docker run -d --name springboot -p 8080:8080 springboot'
+       }
+     }
+   }
+   
+   stage('Finish') {
+     steps {
+       script {
+         sh 'docker images -qf dangling=true | xargs -I{} docker rmi {}'
+       }
+     }
+   }
+ }
+}
